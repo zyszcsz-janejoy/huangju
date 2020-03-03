@@ -1,0 +1,510 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title></title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    padding-bottom: .3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+   padding-bottom: .3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+
+</style>
+</head>
+<body class='typora-export os-windows' >
+<div  id='write'  class = 'is-node'><center>和室友换情头结果被误会在一起了怎么办</center><p>&nbsp;</p><p><strong><span>梅大BBS&gt;&gt;灌水区&gt;&gt;情感八卦</span></strong></p><p><strong><span>和室友换情头结果被误会在一起了怎么办</span></strong></p><p><span>RT，江湖救急！！！！</span></p><p><span>天地可鉴我俩没在一起就是纯洁的室友关系！！！</span></p><p><span>1L 楼主</span></p><p><span>？前排围观</span></p><p><span>2L = =</span></p><p><span>又开始了是吗，隔段时间来一次的八卦爆点</span></p><p><span>3L = =</span></p><p><span>不明白有什么好救急的，跟别人解释一下不就行了</span>
+<span>4L = =</span></p><p><span>附议楼上</span></p><p><span>5L = =</span></p><p><span>所以楼主呢</span></p><p><span>6L = =</span></p><p><span>不知道</span></p><p><span>7L = =</span></p><p><span>此帖终结？</span></p><p><span>8L = =</span></p><p><span>楼主来了orz这不好说，容我解释一下</span></p><p><span>9L 楼主</span></p><p><span>坐等</span></p><p><span>10L = =</span></p><p><span>不过为什么要和室友换情头……梅大没有男女混住的宿舍吧？都是女的？</span></p><p><span>11L = =</span></p><p><span>以我混迹该区的经验来看，应该是男的</span></p><p><span>12L = =</span></p><p><span>请楼上分享一下经验</span></p><p><span>13L = =</span></p><p><span>我猜12L说的应该是之前的那几个很火的帖子</span></p><p><span>14L = =</span></p><p><span>什么帖子？？？我新生，求指路</span></p><p><span>15L = =</span></p><p><span>→李涛，音乐剧系两个教授是不是一对？</span></p><p><span>→现在高个男生都喜欢找高个男生谈恋爱吗？</span></p><p><span>→大二表演系有个男生好帅，脱单了吗？</span></p><p><span>16L = =</span></p><p><span>是这样的，我和我室友前几天闲着没事刷微博的时候看到那种头像合集，觉得很可爱，顺手就换了，也没想这么多。后来同学问起我们才注意到是情头。但是因为真！的！很！可！爱！而且很符合我俩性格所以就没有换掉。结果今天凌晨我室友忽然跟我说，他觉得我师兄好像误会了什么……我就去看了一下师兄的朋友圈，发现他连着发了三天的苦情歌？他一直是超活泼超开朗，只发搞笑日常的那种人，所以我也懵了orz</span></p><p><span>但是我也有点不好去解释！因为室友告诉我说师兄似乎好像可能喜欢我——万一不是呢？我这么上赶着去解释不就很尴尬……</span></p><p><span>况且也没有几个人同时加了我和我室友，直接发个票圈解释也很奇怪……</span></p><p><span>17L 楼主</span></p><p><span>我的重点：这个事情里出现了三个人，都是男的，楼主你音乐学院的吧</span></p><p><span>18L = =</span></p><p><span>这根本不是重点好不好orz但是我确实是音乐学院的</span></p><p><span>19L 楼主</span></p><p><span>只有一个室友，楼主是硕士生？</span></p><p><span>20L = =</span></p><p><span>这也不是重点啊！</span></p><p><span>21L 楼主</span></p><p><span>你有没有试探一下你师兄啊？说不定他喜欢的不是你是你室友呢（？）</span></p><p><span>22L = =</span></p><p><span>？？？？？？？？？？？</span></p><p><span>23L 楼主</span></p><p><span>22L所言极是（。说不定你师兄只是碰巧失恋了呢</span></p><p><span>24L = =</span></p><p><span>下次见面可以试着把话题往这方向引吧？如果是真的很在意应该会当面问你？</span></p><p><span>25L = =</span></p><p><span>对啊，聊聊天什么的指不定就讲到这件事了，然后你解释一下不就OK</span></p><p><span>26L = =</span></p><p><span>先回24L：师兄他单身！这点我还是知道的！</span></p><p><span>然后其实我已经有小段时间没见到他了，不然怎么可能不当面去试探一下……他太忙了，工作也多，我都没怎么在学校里见过他，更何况还不是一个年级也不是一个宿舍楼。认识以来其实我们也没见过几次。</span></p><p><span>27L 楼主</span></p><p><span>没见过几次为什么你室友会知道你师兄喜欢你？我好迷惑</span></p><p><span>28L = =</span></p><p><span>传说中的一见钟情吗</span></p><p><span>29L = =</span></p><p><span>一见钟情还蛮难的，楼主应该很好看吧</span></p><p><span>30L = =</span></p><p><span>附议，不过他们音乐学院不是向来以一见钟情为传统吗</span></p><p><span>31L = =</span></p><p><span>要说传统应该是某教授和某教授带起来的吧</span></p><p><span>32L = =</span></p><p><span>人家那是双向的一见钟情，还是教授更牛逼一点</span></p><p><span>33L = =</span></p><p><span>跑题了兄弟们</span></p><p><span>34L = =</span></p><p><span>行，兜回来，楼主你问问你室友，他怎么知道你师兄喜欢你？</span></p><p><span>35L = =</span></p><p><span>这，这我也很难开口问啊……</span></p><p><span>36L 楼主</span></p><p><span>这有什么不好开口的！</span></p><p><span>37L = =</span></p><p><span>……</span></p><p><span>38L 楼主</span></p><p><span>看出来了，楼主应该是个害羞的小帅哥</span></p><p><span>39L = =</span></p><p><span>……有没有人可以告诉我怎么委婉地问这个问题，我觉得好丢脸</span></p><p><span>40L 楼主</span></p><p><span>？没有</span></p><p><span>41L = =</span></p><p><span>没有+1，就这么问你室友也不会把你怎么样啊</span></p><p><span>42L = =</span></p><p><span>所以你是害怕你室友吗</span></p><p><span>43L = =</span></p><p><span>还是说你其实暗恋你室友？我抬头看看帖子标题，感到一丝耐人寻味</span></p><p><span>44L = =</span></p><p><span>我没有！！！</span></p><p><span>45L 楼主</span></p><p><span>哦哟</span></p><p><span>46L 咩</span></p><p><span>？</span></p><p><span>47L 楼主</span></p><p><span>我下线了</span></p><p><span>48L 楼主</span></p><p><span>？？？</span></p><p><span>49L = =</span></p><p><span>？？？？？？？？？？</span></p><p><span>50L = =</span></p><p><span>？？？？？？发生了什么</span></p><p><span>51L = =</span></p><p><span>46L你谁？？？？？？</span></p><p><span>52L = =</span></p><p><span>为什么见到46L楼主就下线了</span></p><p><span>53L = =</span></p><p><span>合理猜测，46L不是室友就是师兄</span></p><p><span>54L = =</span></p><p><span>是室友</span></p><p><span>55L 咩</span></p><p><span>求你！！！！下线吧！！！！！</span></p><p><span>56L 楼主</span></p><p><span>我不。你不是不好意思问吗，没事，我现在来回答你。</span></p><p><span>57L 咩</span></p><p><span>妈耶</span></p><p><span>58L = =</span></p><p><span>前排围观</span></p><p><span>59L = =</span></p><p><span>莫名感觉有点刺激……？坐等</span></p><p><span>60L = =</span></p><p><span>前方有瓜？我速速赶来</span></p><p><span>61L = =</span></p><p><span>做个人吧@咩 ！！！</span></p><p><span>62L 楼主</span></p><p><span>笑死，楼主孤立无援 </span></p><p><span>63L = =</span></p><p><span>楼主本来想来解决一件生活小事，我看现在可以在这里解决人生大事</span></p><p><span>64L = =</span></p><p><span>草，楼上人才</span></p><p><span>65L = =</span></p><p><span>迎新晚会之后他就来后台找我问了你微信。但是他没立刻加，对吧？过了一个多月才加的你。中间你们在音乐节上见过一次，聊了几句，后来在琴房见过两次，是他在楼下“偶遇”你和我，还借机请你吃饭，拉我作陪。再后来他加你好友，又过两个星期，你们就合作了节目。为什么是你？本来打算另找一个和他同年级的学生，最后对方时间不合适，是他推荐的你，顺理成章借此加上好友。</span></p><p><span>66L 咩</span></p><p><span>……</span></p><p><span>67L = =</span></p><p><span>……</span></p><p><span>68L = =</span></p><p><span>有点厉害……</span></p><p><span>69L = =</span></p><p><span>……</span></p><p><span>70L 楼主</span></p><p><span>不知道楼主什么感想，我看完只觉得，这都没意识到师兄的意思，楼主真的很纯</span></p><p><span>71L = =</span></p><p><span>害羞、纯，且好看</span></p><p><span>72L = =</span></p><p><span>这么一说是我我也心动啊！！！</span></p><p><span>73L = =</span></p><p><span>感觉师兄藏得好深</span></p><p><span>74L = =</span></p><p><span>也没有吧！不都是惯用招数，装偶遇，加微信什么的</span></p><p><span>75L = =</span></p><p><span>我以为学艺术的都会大声say爱呢</span></p><p><span>76L = =</span></p><p><span>那不至于，你看起码楼主就不会</span></p><p><span>77L = =</span></p><p><span>……</span></p><p><span>78L 楼主</span></p><p><span>我感觉楼主要怀疑人生了</span></p><p><span>79L = =</span></p><p><span>你还有什么想问的？</span></p><p><span>80L 咩</span></p><p><span>没，没有了……</span></p><p><span>81L 楼主</span></p><p><span>那我下啦，顺带一说，你师兄今晚的飞机回来</span></p><p><span>82L 咩</span></p><p><span>啧 啧 啧</span></p><p><span>83L = =</span></p><p><span>听室友的描述，楼主参加过好多学校活动啊</span></p><p><span>84L = =</span></p><p><span>音乐学院，也正常吧？他们本来就是活动主力</span></p><p><span>85L = =</span></p><p><span>楼主是一个：活跃在学校舞台、害羞、很纯，而且很好看的音乐学院硕士生</span></p><p><span>陷入沉思</span></p><p><span>86L = =</span></p><p><span>听上去真的太可爱了</span></p><p><span>87L = =</span></p><p><span>合理怀疑：室友也喜欢楼主</span></p><p><span>刚刚语气好醋哦</span></p><p><span>88L = =</span></p><p><span>我没有，不要瞎说哦。我是气他不开窍。</span></p><p><span>89L 咩</span></p><p><span>你不是下线了吗！</span></p><p><span>90L 楼主</span></p><p><span>哎，还是要关心一下小室友的情感生活</span></p><p><span>91L 咩</span></p><p><span>……多关心关心你自己吧！</span></p><p><span>92L 楼主</span></p><p><span>我脱单还遥遥无期，但是你的机会近在眼前啊</span></p><p><span>回复86L：他是真的很可爱哈哈哈哈哈</span></p><p><span>93L 咩</span></p><p><span>……</span></p><p><span>94L 楼主</span></p><p><span>楼主的尴尬之魂熊熊燃烧</span></p><p><span>95L = =</span></p><p><span>我要笑死了，要不楼主你下线吧，我们和你室友唠唠嗑</span></p><p><span>96L = =</span></p><p><span>啊对了，你们不是要解决问题吗？我看也没有解决啊。</span></p><p><span>97L 咩</span></p><p><span>首先，我们要确定楼主对师兄什么感觉</span></p><p><span>98L = =</span></p><p><span>综合本楼信息和楼主看到室友的总结之后的反应，合理推测其实楼主是喜欢师兄的，但是不好意思，或者觉得根本不可能——醒醒啊！！！楼主你这么可爱怎么会有人不喜欢你！！！、</span></p><p><span>99L = =</span></p><p><span>……</span></p><p><span>100L 楼主</span></p><p><span>他把手机扔一边去自闭了。</span></p><p><span>101L 咩</span></p><p><span>99L说中了？</span></p><p><span>102L = =</span></p><p><span>应该说中了吧</span></p><p><span>103L = =</span></p><p><span>那这样说，楼主也喜欢师兄的话，事情不就很好解决了？</span></p><p><span>104L = =</span></p><p><span>但是他不敢吧</span></p><p><span>105L = =</span></p><p><span>不要怂啊楼主！！！！正视内心！！！上吧！！！！</span></p><p><span>106L = =</span></p><p><span>而且今晚你师兄飞回来！去啊！！！</span></p><p><span>107L = =</span></p><p><span>他在床上当鸵鸟呢。</span></p><p><span>108L 咩</span></p><p><span>555555楼主真的太可爱了，师兄不要的话给我吧5555555</span></p><p><span>109L = =</span></p><p><span>他师兄肯定要。</span></p><p><span>110L 咩</span></p><p><span>……</span></p><p><span>好吧，我承认，我是喜欢师兄</span></p><p><span>111L 楼主</span></p><p><span>哦哟</span></p><p><span>112L 咩</span></p><p><span>哦哟+1</span></p><p><span>113L = =</span></p><p><span>哦哟+2</span></p><p><span>114L = =</span></p><p><span>哦哟+10010</span></p><p><span>115L = =</span></p><p><span>那就@好用人工</span></p><p><span>116L 咩</span></p><p><span>……？？？？？？？？？？</span></p><p><span>117L 楼主</span></p><p><span>卧槽</span></p><p><span>118L = =</span></p><p><span>卧槽师兄居然是仝卓吗？？</span></p><p><span>119L = =</span></p><p><span>别紧张，他应该还在飞机上</span></p><p><span>120L 咩</span></p><p><span>我的个妈……</span></p><p><span>121L = =</span></p><p><span>所以，所以，仝卓是歌剧系的，那楼主……？</span></p><p><span>122L = =</span></p><p><span>楼主是歌剧系的硕士生……？</span></p><p><span>123L = =</span></p><p><span>如果我没猜错的话是歌剧系的代玮……？？？？</span></p><p><span>124L = =</span></p><p><span>啊！！！代玮！！！是不是迎新晚会上穿红礼服唱Luna的那个学长！！</span></p><p><span>125L = =</span></p><p><span>不是！</span></p><p><span>126L 楼主</span></p><p><span>是他。</span></p><p><span>127L 咩</span></p><p><span>……</span></p><p><span>128L 楼主</span></p><p><span>我感觉在楼主脱单之前，研究生宿舍会先发生谋杀案</span></p><p><span>129L = =</span></p><p><span>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈草</span></p><p><span>130L = =</span></p><p><span>不行，我还沉浸在震惊中</span></p><p><span>131L = =</span></p><p><span>楼上怎么啦</span></p><p><span>132L = =</span></p><p><span>132L不是我们院的吧，想象一下，你院新生的白月光忽然就要被你院著名的猪蹄子拐了……</span></p><p><span>133L = =</span></p><p><span>楼上不用说那么委婉，简单来说就是我院的白菜被自家猪拱了</span></p><p><span>134L = =</span></p><p><span>你们注意一下，我还没下线</span></p><p><span>135L 楼主</span></p><p><span>哈哈哈哈哈哈哈哈哈哈哈对不起学长！！</span></p><p><span>136L = =</span></p><p><span>学长是真的很可爱5555555</span></p><p><span>137L = =</span></p><p><span>……谢谢？</span></p><p><span>138L 楼主</span></p><p><span>咦，楼主室友呢，为什么不见了</span></p><p><span>139L = =</span></p><p><span>他出去了，说是有事</span></p><p><span>140L 楼主</span></p><p><span>晚上十一点能有什么事（陷入沉思）</span></p><p><span>141L = =</span></p><p><span>别问，问就是给楼主留下独处空间</span></p><p><span>142L = =</span></p><p><span>不要欺负楼主了哈哈哈哈哈哈哈哈人家会害羞的</span></p><p><span>143L = =</span></p><p><span>楼上这就不知道了，欺负代学长真的很好玩哈哈哈哈哈</span></p><p><span>144L = =</span></p><p><span>谁欺负他？</span></p><p><span>145L 好用人工</span></p><p><span>代代！我下飞机了！</span></p><p><span>146L 好用人工</span></p><p><span>！！！！</span></p><p><span>147L = =</span></p><p><span>！！！！！！！！前排</span></p><p><span>148L = =</span></p><p><span>前排围观！！！</span></p><p><span>149L = =</span></p><p><span>仝卓学长！！！</span></p><p><span>150L = =</span></p><p><span>你不用微信告诉我一遍，再帖子里宣布一遍的orz</span></p><p><span>151L 楼主</span></p><p><span>我高兴嘛</span></p><p><span>等我，我0点前就到学校了！</span></p><p><span>152L 好用人工</span></p><p><span>天哪我真想线下围观</span></p><p><span>153L = =</span></p><p><span>想围观+1，估计研究生宿舍今天会很热闹hhhhhh</span></p><p><span>154L = =</span></p><p><span>你们想什么呢</span></p><p><span>155L 楼主</span></p><p><span>其实现在本科生宿舍也很热闹了</span></p><p><span>156L = =</span></p><p><span>是的我也听到了……是不是六楼七楼的楼梯间？</span></p><p><span>难道有什么事情？？好像很多人在说话</span></p><p><span>157L = =</span></p><p><span>回楼上，我住六楼，探头看了一眼，走廊上就俩人，但是确实很吵。主要是其中一个很吵。</span></p><p><span>158L = =</span></p><p><span>说话那个我知道，是CWP的黄子弘凡，和他说话的我就不清楚了，还是个背面看不到脸。没怎么说话，但是声音好温柔噢</span></p><p><span>159L = =</span></p><p><span>我猜是歌剧系的高杨？他们不是经常黏一块儿吗</span></p><p><span>160L = =</span></p><p><span>问题是高杨不是研三吗？这么晚出现在本科生宿舍干什么</span></p><p><span>161L = =</span></p><p><span>咱也不知道，咱也不敢问</span></p><p><span>162L = =</span></p><p><span>虽然很不礼貌但是因为黄子声音真的很大，我坐在宿舍里都听到了……他提到了代玮学长？</span></p><p><span>163L = =</span></p><p><span>然后高杨管代玮学长叫代代？</span></p><p><span>164L = =</span></p><p><span>高杨是我室友啦</span></p><p><span>165L 楼主</span></p><p><span>杨=羊=咩？</span></p><p><span>166L = =</span></p><p><span>噗，为什么这么好笑</span></p><p><span>167L = =</span></p><p><span>这个ID都是黄子给他起的吧，所以是黄子找他，那难怪了</span></p><p><span>168L 楼主</span></p><p><span>代代，下楼</span></p><p><span>169L 好用人工</span></p><p><span>……？</span></p><p><span>170L 楼主</span></p><p><span>卧槽</span></p><p><span>171L = =</span></p><p><span>卧槽有人在研究生宿舍吗实况一下</span></p><p><span>172L = =</span></p><p><span>卧槽等等我在，让我开个窗围观</span></p><p><span>173L = =</span></p><p><span>音乐学院太奔放了吧！！！晚上11点53！！！</span></p><p><span>174L = =</span></p><p><span>仝卓在楼下了，穿了个白羽绒服？拖着个行李箱，没有拿别的</span></p><p><span>175L = =</span></p><p><span>是他那件加拿大鹅吗？</span></p><p><span>176L = =</span></p><p><span>好像是</span></p><p><span>177L = =</span></p><p><span>……代玮不是也有一件？</span></p><p><span>178L = =</span></p><p><span>靠，嗑到了，谢谢楼上</span></p><p><span>179L = =</span></p><p><span>代玮出宿舍楼了！</span></p><p><span>180L = =</span></p><p><span>啊今天是红毛衣的学长！！太好看了！！！</span></p><p><span>181L = =</span></p><p><span>我这听不到他们说啥，但是仝卓两步上去把代玮抱住了！！！！</span></p><p><span>182L = =</span></p><p><span>啊啊啊啊啊啊啊啊啊啊55555555555555我也想抱啊啊啊啊啊啊啊啊啊啊</span></p><p><span>183L = =</span></p><p><span>啊我死了，他俩好甜</span></p><p><span>184L = =</span></p><p><span>糖分超标了我</span></p><p><span>185L = =</span></p><p><span>我看到对面研究生宿舍的阳台上探出了很多头</span></p><p><span>这么多人在潜水吗</span></p><p><span>186L = =</span></p><p><span>不是，是仝卓追到代玮这事儿震惊了我院，短时间内疯狂传播</span></p><p><span>187L = =</span></p><p><span>我院白月光就这么被拐了啊啊啊啊啊啊啊啊啊啊啊！！！！！！</span></p><p><span>188L = =</span></p><p><span>他俩在楼下这么一直抱着？？</span></p><p><span>189L = =</span></p><p><span>没，分开了，牵着手往外走呢——这是不打算回宿舍了？</span></p><p><span>190L = =</span></p><p><span>啧，咱也不知道，咱也不敢问</span></p><p><span>191L = =</span></p><p><span>本科生宿舍喜报：黄子弘凡和高杨一起消失了</span></p><p><span>192L = =</span></p><p><span>而且没回宿舍</span></p><p><span>193L 鹅</span></p><p><span>哇……</span></p><p><span>194L = =</span></p><p><span>什么，所以我们歌剧系的两个漂亮帅哥？都？</span></p><p><span>195L = =</span></p><p><span>算上内部消化的，是你们系三个帅哥，都。</span></p><p><span>196L = =</span></p><p><span>我觉得我们系可能不需要女生（强颜欢笑.jpg）</span></p><p><span>197L = =</span></p><p><span>讲道理，音乐学院这样要出大问题</span></p><p><span>封楼了啊</span></p><p><span>198L 熊猫（管理员）</span></p><p><span>——————————</span></p></div>
+</body>
+</html>

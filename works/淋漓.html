@@ -1,0 +1,509 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title></title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    padding-bottom: .3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+   padding-bottom: .3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+
+</style>
+</head>
+<body class='typora-export os-windows' >
+<div  id='write'  class = 'is-node'><center>淋漓</center><p><span>房间内骤然安静了一秒。</span></p><p><span>代玮仓惶地起身，逃也似的进了浴室，落锁。高杨的声音从外面传进来，逐渐靠近他，连哄带骗地把来练歌的黄子弘凡送出了房间。又是一声脆响，脚步声停在离他一米的地方，隔着一扇门，高杨说：“代代，开门。”</span></p><p><span>他没带抑制剂。长时间的熬夜和高强度的录制让激素失了控：他的发情期本来不该在这个时候到来。“代代，”高杨在外面唤他，语气平稳，内容却步步逼迫，“你要我现在去借抑制剂吗？”</span></p><p><span>不行。代玮想起来前几天张超看他的那个眼神，冰凉地、探究地从他身上剐过去，骇得他恐慌到半夜。最后是高杨看出他辗转反侧夜不能寐，放出一点信息素安抚他入睡。</span></p><p><span>他对高杨的味道倒是已经习以为常了。开始他以为高杨喜欢喝茶，过了两天才发现是人身上的气味，和用来遮掩信息素的香水混在一起，不易分辨，只缓慢厚重地渗入他生活的每一寸空间。</span></p><p><span>“不需要！”代玮反驳。高杨又逼问一句：“那你需要我找人帮你吗？比如张超？我可以去他房间凑合一晚上。”</span></p><p><span>“别，我不要。”代玮说。他尚能理智地应对当下的局面，但也不得不承认似乎没有别的更好的办法。中央空调“滴滴”响过两声，开始大功率地换气。“那你要怎样呢？”高杨说，听动静似乎靠在门边，代玮可以想象出他那副似笑非笑的表情来，“味道都溢出来了。”</span></p><p><span>他自己也闻到了。代玮打开水龙头狠狠冲了把脸，这似乎没什么用。桃子味儿混在浴室之前未散去的水汽里蒸腾起来：汁水淋漓。</span></p><p><span>高杨笑了一声。</span></p><p><span> </span></p><p><span>代玮喜欢喝桃桃乌龙。没有奶茶或者咖啡那么浓郁，相比之下更清爽，带一点水果甜香。要高杨说，这简直是一种赤裸而隐秘的邀约。很多次他看代玮晃晃悠悠进门，随手把没喝完的饮料搁在床头柜上时，都会忍不住恶意地多想。而当他带着某种目的去和室友相处，一切明明顺理成章的动作在眼里都成了欲擒故纵。</span></p><p><span>但是高杨的理性知道代玮没有那个意思。大三的代玮更像个仍然留在象牙塔里的孩子。艺术是座高塔，向下不得出，只能往上，登顶，然后飞出去，飞高而死，永不落地。高杨想，他不过比代玮早一步看到塔外的光景，感受过太阳的炙烤，知道在高塔里所以为的期待的其实都与现实大相径庭。所以他比人多一层世俗的外壳，或说盔甲，烈日灼烧之下看似毫发无损，实际上内核已经濒临融化。</span></p><p><span>美——各种美，都是在距离的保护下展示的：靠得越近，就越是濒临死亡。</span></p><p><span>高杨俯下身去。这回他们是真的亲密无间了。</span></p><p><span>“不要标记。”代玮用手遮着眼睛。高杨低头吻他，细碎地从手心到耳边，然后说，好。他倒是无意勉强。omega的后穴温暖湿润，在发情期里对任何入侵者都带着挽留，高杨几次感觉到自己从生殖腔口擦过：一片尚未被开发的禁区。代玮被迫发出带着哭腔的喘息，手指抓紧高杨的肩膀又松开，无可去处地落在床单上。</span></p><p><span>“求你……”他说，“我不要被标记。”</span></p><p><span>好。高杨又沉下去吻他，错过他的腔口，直往深处去。字句破碎了，只留下气声，混着一点被逼出来的眼泪落在床上。水蜜桃的香气被撞散，不成样子地被茶香裹挟住，代玮一阵阵地发抖，是被天性压制的恐惧：一个强大的、充满压迫感的年轻alpha，哪怕答应了也随时可以标记他。</span></p><p><span>“别怕。”高杨说，把人翻过去，摆成趴跪的姿势。代玮尚未觉出有什么问题，直到高杨轻轻咬住他的腺体。“临时标记，这样你也好受点。”高杨说，随着字词发音不轻不重地用尖牙磨蹭那块皮肤。代玮没法拒绝。他现在难受得要命，随着情欲上涌，生殖腔一点点打开，做出欢迎的姿态；如果这时候没有抑制剂也没有临时标记，他可能甚至挨不到天亮，就要昏死在这漫长的渴望里。</span></p><p><span>但是高杨又要故作绅士地征询他的意见。“可以吗？”高杨问，随之覆上来完全地把他搂进怀里。代玮的手腕被攥着反复摩挲：委婉的要挟，看似给了选择的空间，其实都是诱骗。他只能把自己的弱点送到人手上。高杨又笑，呼吸落在他发梢。</span></p><p><span>从外部包裹着的信息素此刻入侵了他，从后颈的腺体那样一个微小的入口奔涌而入，流向四肢百骸。代玮猛地绷紧了，高潮来临时连后穴都无法控制地收缩起来，高杨咬着他的皮肉，闷哼一声。</span></p><p><span>高杨把人带倒在床上。他伸手去摸人汗湿的额发，却落了个空。代玮翻身，把自己挪到床尾，抱着枕头放空。</span></p><p><span>“这是第一次吗？”高杨摸到床头柜的手机，边看边问。气氛有点奇怪，起码和他想象的不一样。</span></p><p><span>代玮没理他，高杨把目光从屏幕上挪开，看了他一眼。少年湿漉漉地发呆，在他的注视下一滴水缓慢地划过额头，掉在床单上，洇出一点痕迹。高杨几乎以为自己听见了声响。诚然，不是眼泪，但似乎成为了某种开关，代玮叹了口气，从床上坐起来，又愣了几秒，说：“我去洗澡。”</span></p><p><span>代玮的声音有点哑，但听起来也还好。高杨想起刚才近乎沉默的性事，唯二的开口只是“不要标记”，余下的都咽进嗓子里，留下压不住的气声漫出来。他看上的这颗水蜜桃，看上去鲜亮，闻起来甜腻，却有一个沉默的核。水声传出来，高杨重新点亮屏幕，微信忽然跳出来新消息。</span></p><p><span>黄子弘凡：我帽子忘在你们那了，什么时候方便拿？</span></p><p><span>高杨缓慢地戳着屏幕，打字：代代睡了，你明天再来拿吧。</span></p><p><span>发送。</span></p><p><span> </span></p><p><span>“出门啊？”张超说。一句聊胜于无的废话。代玮点点头，没接话。</span></p><p><span>张超被这少见的沉默噎住，半晌，拿出手机低着头戳戳点点，两人立在电梯前，等待机器缓慢地爬升。代玮攥住书包带子盯着没开的电梯门，不够平整的不锈钢面上映出来他俩扭曲的影子，走廊的顶灯糊成一个个色块粘在头顶，脚下的地毯则成了一条暗红的流淌的河。他们站在河里，红色的水，不见底，黏稠地蹭过脚底，干涸了，变成一块块血迹，把他拉扯在原地。</span></p><p><span>“代玮？走了。”张超按住开门键喊他，神色奇怪。“你没事吧？”他又问，上下把人打量一番，“昨天不还好好的吗？”</span></p><p><span>那种被审视的感觉回来了。</span></p><p><span>“我没事，就是没睡好。”代玮说，“走一走就醒了。”张超理解似的点头：“是不是黄子老往你们那屋跑？不行你可以睡我屋来，丁辉哥有工作，不常住这。”</span></p><p><span>礼貌又有理的邀请。代玮想起来夜里高杨的口头威胁，忍不住要怀疑他们私下是不是有过什么交易。</span></p><p><span>不用。代玮委婉回绝。张超默了几秒，笑笑说：“那你多注意点自己。”</span></p><p><span>不知道是几个意思？然而两人都没有再顺着这个话题多说一句。电梯开了又关，进来几个陌生的房客各占据狭小空间的一角，于是气氛更多几分尴尬。众人似有若无地僵持到电梯停在一楼，猛地被外面的寒风吹散了。</span></p><p><span>长沙没有暖气，又湿又冷，离开空调简直让人没法活。饶是代玮在浙江读了两年书，也实在是习惯不了这样的天气。他快走两步，把自己埋进风里。</span></p><p><span> </span></p><p><span>“一共三十二块六，需要袋子吗？微信还是支付宝？”</span></p><p><span>“不用。微信。”代玮刷了支付码，站在收银台旁边，低头把抑制剂往书包里放。</span></p><p><span>“要——要一盒alpha的阻断剂，易感期强效的。”有人在他背后说。代玮猛地抬头，看到戴口罩的仝卓。</span></p><p><span>店员转身去拿药，留下他俩站在正对着门口的通道上。“哎哟，代代。”仝卓挪了个位置，又瞟了眼手机，“不是给我自己买的啊，不用离我那么远，”他笑，“但是你这几天还是离高杨远点儿。”</span></p><p><span>“我知道。”代玮叹气。仝卓饶有兴致地把目光在他和自己的手机上转了两圈，弯了弯眼睛，没多说话。屏幕又亮一下，被他按灭了。代玮相信自己有理由猜测屏幕的那一头就是自己的室友。</span></p><p><span>他早上出门的时候高杨已经不在，只留一张便条给他，说是去给黄子弘凡送帽子。昨晚黄子在他们宿舍练歌正音，帽子有落在房间里么？他没印象了，回忆起来都是些混乱不堪的场景。再说又何必专门留这么一张字条说这无关紧要的事情。高杨在特定的事情上有一种超出同龄人的执拗。可能与异国生活有关，也可能与更早的中学时代有关。这无所谓。学艺术的人往往和旁人不同，固执地一条路走到黑，同时又保留一种纯粹的孩子气。比如郑云龙，比如阿云嘎。这种特质在初入大学的孩子们身上并不明显，而在高杨之类已经踏入社会的小辈身上则初露端倪。</span></p><p><span>“回去不？”仝卓问他。</span></p><p><span>“高杨让你问的？”代玮反问他。话出口他才觉出不对，字词被冷风削成尖刀。仝卓愣了一秒，笑起来：“可不是吗，他说给你带了星巴克。”倒是看不出半分不悦来。</span></p><p><span> </span></p><p><span>仝卓看起来是个好人。仝卓确实是个alpha。如果要用简单粗暴的小学生句式来形容仝卓，代玮会选择这么说。一个好脾气的alpha，你对他生不起气来，情绪掷出去都是泥牛入海。仝卓看上去似乎永远一团和气满脸笑意，哪怕代玮自认他俩关系不错——鉴于小辈们之间的关系本来就不错，那么他俩之间则可以说是更密切一些——也有时想不透这人到底心里是怎样想的。他们沿着大路往回走，仝卓沉默不下来，有话没话地跟他瞎扯，从高天鹤前几天吹的彩虹屁聊到黄子弘凡又出去打球被鄙视，代玮只隐隐觉得奇怪。仿佛什么事情逼着仝卓一直一直说下去才行。</span></p><p><span>他们终于在路上沉默。</span></p><p><span>“你如果……可以和节目组申请换个房间的，我记得还有备用的单人间。”仝卓说。他语气诚恳，代玮一时间竟然不知道先回应什么。或者说高杨又告诉了他什么？</span></p><p><span>“你住在42楼，怎么对39楼的事儿这么清楚？”他问。</span></p><p><span>仝卓尴尬起来。“今早我遇到高杨出门，他身上那味儿……”</span></p><p><span>“好了，可以了，不用再说了。”代玮及时打断，只觉得自己恨不得立刻蒸发在这长沙的白日底下。</span></p><p>&nbsp;</p><p><span>“你买避孕药了吗？”高杨问。</span></p><p><span>气氛似乎一瞬间冷硬下来，代玮懵住片刻，脑子里转过一圈，不得不承认自己忘了。</span></p><p><span>“来吃了吧。”于是高杨叹气，向他招手，“应该不会有什么问题……但是以防万一。毕竟事出突然。”代玮在他的注视下吃药喝水，只觉得被盯得嗓子发紧，药片黏在食管上，哽得难受，又灌半杯水下去。“要不我找人换个房间住几天？不然主要是影响到你。”高杨说。</span></p><p><span>正好代玮呛水，人撕心裂肺地咳起来。高杨从座位上扑过来给他顺气。等人缓过劲儿来了，倒显得有点无措。</span></p><p><span>“倒也不必。反正我这期没有舞台……而且，”代玮斟酌了一下，“而且我对你信息素比较熟悉，会比换个环境要好。”</span></p><p><span>“那就行。”高杨松一口气，把纸袋拎上来，“给你带了喝的。”</span></p><p><span>这饮料更像某种暗示。代玮感觉自己从耳朵尖冒出热气，他也闻不出来房间里的甜香是他的还是眼前的饮料的。鉴于他贴了抑制贴，应该也许是这杯桃桃乌龙的。</span></p><p><span>“是好喝。”高杨把塑料杯子放下，笑起来，“难怪你喜欢。”</span></p><p><span> </span></p><p><span>“谁？”代玮眯着眼问。房门口透进来走廊的光，一时晃得他睁不开眼。</span></p><p><span>“我。”高杨说，推门进来，小声和门外说了几句，才关上门。房间又陷入一片黑暗。代玮窝在沙发上没动，只听着高杨在玄关窸窸窣窣地一阵响动：他没说开灯，高杨似乎也没有这个意图。</span></p><p><span>“你在沙发上睡？”高杨放好东西走过来，站在沙发边上问。代玮抬起头来看他。窗帘没拉，借着一点月光，他只看到高杨的模糊轮廓，光影也不甚清楚，眉眼都垂下来藏在阴影里，晦暗一片。“就是有点累，躺了一会儿。”代玮说，慢吞吞爬起来。拖鞋不知道去哪了，他只能光脚踩在地毯上，所幸空调开着，室内并不冷。高杨沉默了片刻。</span></p><p><span>代玮往洗手间去，一边洗脸一边问：“刚刚门口是谁？”</span></p><p><span>“张超。”高杨说，终于动了动，坐在他刚刚躺着的地方。借着灯光代玮终于看清他的疲惫的正脸。“他不是跟龙哥排练么？”代玮说。</span></p><p><span>“排完了，龙哥跟嘎子哥出去了。”高杨说，“路上遇到了，顺路一起回来。”他好像又说了点什么，代玮开着水哗哗地洗脸，字句在耳边模糊地流过，被水冲走，只好又问：“你刚刚说什么？”</span></p><p><span>“没什么。”高杨说，“没说什么。”</span></p><p><span> </span></p><p><span>灯又关上。高杨带着一点未干的水汽往床边走，最后却没坐在自己床上。你干什么？代玮翻过身来，用眼神问他。窗帘拉好了，黑暗中看不清人，高杨的视线似乎落在他身上又似乎落在他身后的某个点上，融在黑暗里沉沉地下坠。他们僵持了几秒。高杨贴着他躺下来，以一个半抱的姿势迫使他靠进自己怀里。</span></p><p><span>“陪我一会儿吧。”高杨在他耳边说。呼吸落在耳边，代玮没动。alpha的信息素缓慢地释放出来，环绕在他身边，并不陌生的味道：平时掩盖在香水之下的茶香早已在不知不觉中渗透在生活里。</span></p><p><span>这味道本还有点宁神安抚的效果。代玮曾经怀疑过到底是信息素影响人还是人的性格决定了信息素的味道，不过也没深究。他只觉得高杨的性子和他那气味合适得很，不急不缓，心平气和。如今却好像不是这样。高杨把手又收紧一点，企图像抱着娃娃的孩子一样姿势，只可惜两人身高相似，区别只在体型上。“你怎么像个纸片一样。”仝卓如此吐槽过他。代玮觉得自己此刻像一张被揉起来的纸，皱在人怀里使不上劲儿。</span></p><p><span>“高杨。”他叫人名字。</span></p><p><span>“陪我一会儿。”高杨说，语气疲惫，“别走。”</span></p><p><span> </span></p><p><span>仝卓打了个招呼。“你起了啊？”他说。</span></p><p><span>代玮丈二和尚摸不着头脑。仝卓看着他发懵，露出一个标志性的笑。“早上遇到高杨，他说你没睡好。”两人错过身，仝卓小声说：“喷点香水。”</span></p><p><span>狗鼻子。代玮在心里骂，端着盘子单独占据一张桌。明明昨晚他和高杨什么都没做，明明是高杨非要抱着他睡觉，明明是因为高杨他才睡得不好又做了噩梦，到头来反而人人盯住他代玮来。又不是我的错，代玮心想，怒而戳起一块西蓝花，愤愤地嚼了。</span></p><p><span>“怨气这么大呢。”张超说，在他面前坐下。张超应该是吃完了的，于是两手空空地在他对面，看得代玮心火更起。“你没事儿了？”他问，“明天不就录制了吗？”</span></p><p><span>“还行，不差这几分钟了。”张超坐得踏实，偏一偏头，“龙哥还在吃呢，我等他再一起合两遍。”代玮顺着看过去，郑云龙和阿云嘎不慌不忙地边吃边聊。他是羡慕他们的。准确地说他羡慕节目里所有的“郑云龙”们。张超以后也会是其中一员，他想，高杨也是，仝卓也是。游刃有余的大人：事业有成，波澜不惊，最重要的是性别不会给他们带来困扰。</span></p><p><span>性别。性。信息素。“你昨晚跟高杨说了什么？”代玮忽然问。张超明显愣了一秒，才回答他：“就随便聊了聊。”</span></p><p><span>代玮没应他，用眼神表达怀疑。</span></p><p><span>“真就聊了聊。”张超忽然笑了，“高杨跟你说什么了？”</span></p><p><span>“没说什么。”代玮说。</span></p><p><span>“那不得了。”张超说，“要说也只能是他自己想太多。你也是。”他往旁边扫了一眼，起身。“我排练去。你……刚刚仝卓肯定跟你说了。”</span></p><p><span>代玮几乎要失手把杯子打翻。然而张超已经走开了，远远缀在前辈身后往餐厅外面走，门一开一关，忽然成了两个世界。</span></p><p><span> </span></p><p><span>阻滞剂并不好用。留在他身上的除了高杨的信息素还有香水气味，信息素可以被阻隔，香水就实在令人无能为力。然而代玮自己并没有用香水的习惯。“要不你就用这个，问起来就说是共用一瓶。”高杨说，“室友么，也正常。你看贾凡他们房里点香薰的，两人味道也差不多。”</span></p><p><span>倒是解释得通。然而代玮还是拒绝。“算了。”他说，“就这样吧。”</span></p><p><span>于是等待化妆的时候黄子弘凡怀疑地绕着代玮闻了三圈，最后毫不确定地问他是不是吃了糖。</span></p><p><span>“你要吗？”代玮掏掏口袋，摸出来两粒。粉色的水果硬糖，外面包着层会变色的糖纸，香味确实浓郁。黄子弘凡却没拿。“你吃吧。”他说，脸一直红到脖子，扭头跑了。</span></p><p><span>“桃子味儿的？”高杨探过身来问他，“给一颗。”</span></p><p><span>代玮给他一颗。桃子味水果硬糖的香气化开，弥漫在化妆间里。张超“啧”了一声。“小心粘了嗓子。”他说。</span></p><p><span>不怕。高杨笑眯眯，我乐意。</span></p><p><span>代玮把视线在两人之间转过一圈，看不出所以然来。</span></p><p><span> </span></p><p><span>不相熟的人可以用“近乎温顺”来形容代玮，而高杨敏锐地抓住了他截然相反的内核。他不知道这是好是坏，只能凭直觉猜测其中微妙。</span></p><p><span>化妆间里的硬糖换成夹心软糖，甜蜜蜜地顺着舌尖流下去，咽喉，食管，一直到胃里，黏腻的一片。高杨拿起水杯喝了一口，杯口印上颜色，又被化妆师一通数落。</span></p><p><span>“不吃了不吃了。”他认错，举手投降。旁边代玮短暂地分心看他一眼，笑了两声。</span></p><p><span>代玮其实不常吃糖。他只是带着，装在羽绒服或者大衣口袋里，甜香的一把，被众人路过时顺手摸去一两颗。高杨顺着笑声瞥过去，看见代玮正在专心致志地看手机，另一手在椅子扶手上来来回回地敲。不知道是什么谱子。高杨盯了一会儿，没太看出个所以然来。他只觉得那仍是一双孩子气的手：没有分明骨节，缩在袖口只露一截手指。他伸手去拿那颗如今融化在他胃里的软糖时，那手指蜷缩在温暖的口袋里蹭过他的掌心，而当事人只一脸无辜地问他是不是要一颗糖。</span></p><p><span>要，当然要的。高杨记得自己点头。是不是糖本身也不重要了。</span></p><p><span> </span></p><p><span>他只记得自己拿到一颗熟透的桃子，忘了它也有一个坚硬的核。张超在房门口遇到高杨。“代代呢？”他问，刷了房卡进门。高杨跟着他进来。“跟仝卓出去了。”高杨说，不出意外地看见张超露出一个略显惊讶的表情，“说是吃夜宵。”</span></p><p><span>“你醋了。”张超托着下巴看他，“让我猜猜，你是不是约了他？”</span></p><p><span>“他说和仝卓约好了出去，问我去不去。”高杨摊手，“去不去？”</span></p><p><span>显然是没去了。张超饶有兴趣地打量一番高杨：看上去面色如常，好像也没什么问题。他尚且没看出来，被观察对象就如实坦了白。</span></p><p><span>“我不去。仝卓那个表情你是没看到，是你你也不会去凑热闹的。”高杨说。</span></p><p><span>这和原先不一样。“你不是都把人搞上床了吗？”</span></p><p><span>高杨哼了一声。“两码事。”他没把话说完，张超一时不知道接什么。两人沉默片刻，小桌上手机亮了一下。</span></p><p><span>高杨点开微信回复消息，又顺便点进朋友圈，最上面一条赫然是代玮一分钟前发的照片。夜市烧烤摊上两人自拍，仝卓笑得几乎溢出屏幕。高杨把手机翻过去给张超看：“这就不一样。”</span></p><p><span>“不一样么？”张超说。</span></p><p><span> </span></p><p><span>代玮怎么想的他们都不知道。仝卓看上去似乎并未思考过这个问题，而高杨觉得已经没什么可琢磨的。张超时而觉得自己是个局外人，坐在观众席上看一出难以阅读的闹剧。只不过他这观众也要和演员互动。代玮占据绝对的主角，在来来去去的人群里短暂地停留。他只是“停留”，按张超的理解来看，并不“留情”。他看不太懂——张超承认。代玮的性格和他的性别矛盾又统一地糅合在一起，呈现出一种难以言说的对立感来。</span></p><p><span>仝卓并不参与进来。高杨总疑心他是看得最明白的那一个：恰到好处的距离和绝佳视角。台上嘈杂一片，你方唱罢我登场，热闹非凡。台下人头济济，人人一副严肃姿态下面埋着三分困惑两分迷茫。但你一眼看过去就可以从中单单拎出两个人来：主角冷眼旁观，观众之一则明明白白摆出一副通透模样来。当局者不迷，旁观者也没几个清醒。他怀疑如此多的欲语还休之下的隐喻和暗示有几个人能够真正明了，不过当前他尚且无暇顾及他人，只求安稳走完眼下这场戏，顺利下场。</span></p><p><span>于是高杨叹一口气，把自己埋进代玮的被子里。床的主人没有回来，而不速之客堂而皇之地在他的床上入眠。</span></p><p><span> </span></p><p><span>“你昨晚睡我床上了，我就在你那边睡了一晚上。”代玮说，面色如常地打了个不算早的招呼，“黄子说要找你练歌，你快点收拾。”</span></p><p><span>高杨放空几秒，在包裹着自己的不同往日的气味里逐渐记忆回笼。这味道和之前两夜的还不一样。没有那么的……汁水淋漓。只是普通的温软的水果香气。</span></p><p><span>黄子弘凡进门之后遭遇了极大的困惑。他有意避开代玮的床，坐在高杨床上，又猛地弹起来。“你们昨天干嘛了？”他问。高杨端着水过来坐在他对面，身上睡衣沾着的omega的味道加倍了他的不解。</span></p><p><span>“羊你身上这味道……你是买了新香水？还是刚刚吃了糖？”他问，状似拐弯抹角，然而少年人的小心思在年长几岁的高杨来看简直不值一提。</span></p><p><span>“我太困了，睡错床了。”高杨打断他，垂眼翻开谱子，“——上次我们到哪儿了？”</span></p><p><span>一脸困惑的黄子弘凡抓抓头发，很快被带跑了思路。 </span></p><p><span> </span></p><p><span>空气被灯炸至金黄，又或者是裹了蜜糖。代玮在沙发上睡得沉，暖光在他身上裹一层茧，看不真切，却又缠绵地渗出些疲惫。</span></p><p><span>高杨沉默地站在边上，低头看他。</span></p><p><span>这是他们近来的日常。临近下一期录制，他们两个都有舞台，都是三重，忙着磨合忙着排练，作息各不相同。代玮睡得早些，往往在高杨回来之前就关灯睡觉，今天却躺在沙发上，手边还掉着本谱子。</span></p><p><span>“代代？”高杨轻声喊他。人没应。又喊两声，代玮皱着眉偏了偏头，依然没睁眼。于是高杨上手，摸到滚烫的皮肉。</span></p><p><span> </span></p><p><span>代玮是被冷水弄醒的。高杨拿着冷水洗过的毛巾给他擦脸，被他睁眼吓了一跳。</span></p><p><span>“你醒了？”他问，“能坐起来不？”</span></p><p><span>逆着光线代玮看不清高杨的脸，只好抓着人伸出的手挣扎着坐起来，一阵头晕目眩。高杨的大衣从他身上滑下来，又被他眼疾手快地一把接住，因为动作过大而一瞬间失去了方向感，差点一头撞在茶几上。</span></p><p><span>“你坐好吧。”高杨说，又给他把衣服披上，“先吃退烧药？”</span></p><p><span>“不用。”代玮说，略带尴尬地试图站起来，失败，“不是感冒。”他拿着高杨的大衣有点不知如何是好，“帮我拿个速效的抑制剂吧，在床头柜抽屉里。”</span></p><p><span>高杨挑了挑眉。</span></p><p><span>速效的抑制剂都是针剂，皮下注射，操作简单。高杨看着代玮给自己扎了一针，面无表情地收好东西，过了两三分钟才慢慢地呼出一口气，放松下来。</span></p><p><span>“你还好吗？”高杨问。</span></p><p><span>“……好多了。”代玮一边回答一边走向床头把剩余的抑制剂放回抽屉，“熬太多了，作息不规律。”他冲高杨笑一笑，进了洗手间。</span></p><p><span>再过三个小时，窗外就要天亮。他们有时候会熬到天明——从日落月升，到日出月落。三四十层的酒店房间可以俯瞰大部分的城市，从下班晚高峰到沉默的深夜，再到一个上班的早高峰。人们挤挤挨挨地涌向上班的路，他们则涌向电梯，又分流向各自的房间，开始一场昼夜颠倒的睡眠。</span></p><p><span> </span></p><p><span>高杨睡得并不安稳。空气中残存的信息素尚未完全散去，在冬季温暖室内的沉滞空气中下坠——下坠，压在他的身上，湿漉漉沉甸甸。</span></p><p><span>他第一次觉出窒息的恐慌来。这很奇怪。因为代玮打了抑制剂又贴过屏蔽贴，室内的信息素只剩几个小时之前留下的丝丝缕缕，能让人闻到，但也仅仅是闻到而已。像一根细细长长的丝，你以为可以轻易扯断，却被它层层困住。代玮没有醒，只是翻了个身，在梦里极轻地叹了口气，把头埋进被子里。</span></p><p><span>高杨趁着没拉好的窗帘透进来的些许微光看他。一个睡得无知无觉的omega。他不知道这个男孩到底藏了几层心思。有可能很多，也有可能是他误会了那个赤裸坚硬的核。如果他是张超，可能会有兴趣拿个工具把核撬开，再不济也要抡一锤下去试试。可是他不是。所以张超以局外人的身份冷眼旁观，而他本人实际上并没有这个持之以恒的探索精神。</span></p><p><span> </span></p><p><span>之后一段时间他们仍然忙碌。代玮在仝卓的房间里排练三重唱的和声到深夜，仝卓并不介意，只热心凑一场本组的热闹。高杨有时候睡前忍不住揣测一番，醒来却仍看到代玮缩在被子里睡得昏天黑地。</span></p><p><span>他们都为这场演出准备了很久，尤其作为代玮的第一次舞台，不可谓不慎重。高天鹤盯得紧，恨不得一天二十五个小时用来排练。录节目就是这样，和正常的学习完全不同，却更快地逼人长大。高杨觉出来代玮的变化，只是想不明白区别在哪。他本人不求甚解只求囫囵吞枣，如今咽不下去干脆单单欣赏。仝卓给他发消息：“再不抓紧就不是你的了。”</span></p><p><span>哦。高杨回复一个“哦”字。反正我尝过，食髓知味，倒也不亏。</span></p><p><span>于是众人皆把自己摘出去，观一场别人的戏。</span></p><p><span> </span></p><p><span>代玮的眼神极平静地滑过去。他今天配合曲目的服化冷淡骄矜得与往日大不相同。年轻的选手们啧啧称奇，高天鹤则骄傲得像个开屏的孔雀，夸赞自己衣品眼光独到。仝卓作为同组成员围观了全程，偷偷拍图发给隔壁的高杨。那是一张侧脸，照片上的人略微抬头，半垂着眼看工作人员帮他调整领结。这其实是个很常规的事情，却莫名生出几分陌生来。高杨凝视那张照片，关掉又摁开，反复几次，终于收起手机。</span></p><p><span>他也不知道自己什么心情什么想法。可能男孩长大了，也有可能是他高杨终于幡然醒悟。</span></p><p><span>他在台下看他们的表演。低男中音的黑西装红衬衫。殷红的，艳红的，似乎有血流下来，又像那天夜里沉滞空气里凝固的月光。</span></p><p><span>如果一切都是幻觉，那么桃子确实流出糜烂的香气。艳红的，缠绵的，顺着采访里被不耐烦松开的领口漫出来。</span></p><p><span>“你什么都没做？”张超问。</span></p><p><span>高杨摇头，往远处看一眼。代玮低头和高天鹤说话，额发遮住眉眼，看不出神情，只落下一片阴影。</span></p><p><span> </span></p><p><span>——他缺一支白玫瑰，但不应由我献上。</span></p><p><span> </span></p></div>
+</body>
+</html>

@@ -1,0 +1,509 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title></title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    padding-bottom: .3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+   padding-bottom: .3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+
+</style>
+</head>
+<body class='typora-export os-windows' >
+<div  id='write'  class = 'is-node'><center>浪潮</center><p><strong><span>A</span></strong></p><p><span>2床来了一个新病人。</span></p><p><span>周一主任大查房，十几个“白大褂”窸窸窣窣地进了病房，围在病床边上。</span></p><p><span>代玮就是在这时候醒过来的。年轻的住院医生快速地汇报病情，间或夹杂着众人的低声讨论，更远处则时有时无地传来护士们急急忙忙的脚步声，像跳跃的节拍。人声如潮，如海浪，在他周围的空气里起起伏伏，他听不真切，于是睁开了眼睛。管床医生把目光移向他，停留了一秒，问他还疼吗。</span></p><p><span>海浪退下去，声音清晰起来，痛觉也被唤醒。</span></p><p><span>“……还是胃疼。”他说，声音嘶哑到自己都听不清。医生习以为常地点头。</span></p><p><span>“夜里是你朋友送你来的，这不行，你家属呢？得有家属过来。”有人说。代玮把视线挪过去，他没戴眼镜，看得模模糊糊，只觉得有目光严肃地投在他脸上。“你朋友说你是唱歌的？……搞成这个样子……胃食管返流……到时候嗓子都保不住的。”</span></p><p><span>声音断续地传进代玮耳中。朋友大概是高杨，或者黄子，或者他俩一起。他没有太多印象了，只记得吃过晚饭就开始剧烈的胃痛、他冲进卫生间里呕吐、高杨慌张地跑进来，随后就是在他眼里扭曲成一片的医院的白影，医生的问话像雷声落在他耳边，响亮又模糊，他好像回答了什么，又好像根本没能发出声来……然后就是现在了。</span></p><p><span>医生隔着被子拍拍他的腿：“今天一定要你家属来一趟，知道吗？”</span></p><p><span>代玮张张嘴，最后沉默地点头。</span></p><p><span>布料摩擦的声音响起，人群远去了。</span></p><p><span> </span></p><p><span>“我跟仝卓说了，让他看到消息回我电话。”高杨说，把手伸进被子里摸了摸，摸到一手冰凉的冷汗，“还是很痛？”代玮点头，哪里都痛。头痛，胃痛，他的嗓子灼烧般地痛，痛到最后成了一层薄薄的膜贴附在他与世界之间，世界模糊了，只剩疼痛还清醒着。</span></p><p><span>高杨似乎在说话，面带忧虑。代玮努力盯了他一会儿，还是困倦地闭上眼睛。他在疼痛的海里挣扎了一会儿，终于自暴自弃地沉下去。</span></p><p><span>被子下面的手，掌心是湿冷一片，指尖落在高杨手里，在这温热的被褥之间冰得不可理喻。高杨叹一口气，看了眼手机，屏幕空洞漆黑地望着天花板。还是没有回复。</span></p><p><span> </span></p><p><span>探视时间几乎都被代玮睡了过去。再睁眼时床边已经没人，病房里静得出奇。他的床位靠窗，看出去是一片灰白的雾蒙蒙的天，除此之外什么都没有，像一块伪装起来的发光的灯板。他试图坐起来，努力几次均宣告失败，只得认命地躺着。手机搁在枕头边上，充好了电，一条一条地跳出消息来。</span></p><p><span>高杨：还是联系不到仝卓，你醒来也给他打个电话试试。</span></p><p><span>高杨：如果今天过去都联系不到的话，明天我来签委托书，医生说不能再拖。</span></p><p><span>高杨：我和黄子一直开机，有事随时打我们电话。在医院留的联系人也是我。</span></p><p><span>代玮：好。</span></p><p><span>他退出界面，去拨仝卓的电话。</span></p><p><span>电话通了，但是接电话的不是仝卓。仝卓的经纪人在电话那头语气疲惫：“代老师，不好意思之前没有接到您的电话……昨天这边山体滑坡，今天刚刚重新通电，可能一时半会儿信号都不太好……”</span></p><p><span>“不好意思，”代玮打断了经纪人的话，“我住院了，需要仝卓来签个字。”他嗓子疼得厉害，声音都低哑得变了调。电话那头忽然一片手忙脚乱的杂音，再安定下来时对面已经换成了仝卓。</span></p><p><span>“代代，”仝卓叫了他一声，“你在医院等我，我立刻回去。”电话那边模糊地传来翻找声、拉拉链声，仝卓的语气仍是平稳的，“我会注意安全，你也注意自己，好吗？”</span></p><p><span> </span></p><p><span>仝卓是第二天早上七点到的医院。他跟着运送物资的车辆出了山，从县城坐大巴转动车再打出租一路奔到医院，在门口遇到打算先来一步的高杨和黄子弘凡，把人吓了一跳。</span></p><p><span>“你这是逃难啊。”黄子弘凡感叹，联合高杨把人先押进了医院旁边的小旅店，花了半个小时洗澡刮胡子收拾利索，才重新出门。</span></p><p><span>此时就不得不说黄子弘凡是明智的。他们三个又一次抵达医院的时候，不知道如何听到风声的媒体已经守在了门口。</span></p><p><span>仝卓不用想也知道公司的公关一定在加班。昨天刚出的新闻说他们剧组所在地山体滑坡正在抢险救援，接着他就只身一人连夜跨省赶回了杭州，第二天一早又和友人一同出现在当地医院楼下。虽然黄高二人的工作室在业内也赫赫有名，但音乐界和娱乐圈终究不是一回事，因此之前二人前往医院的时候并没有被媒体注意。可是仝卓不一样，他这样成功的跨界艺人往往得到更多的关注——也遭遇更多的麻烦。</span></p><p><span>他们花了不少功夫才在医院保安的帮助下进入医院大楼，往住院部去。</span></p><p><span>“昨天代代的情况不是很稳定。要是你回不来的话，我们也很难替他做主。万幸万幸。”高杨说。</span></p><p><span>仝卓心不在焉地应了一声。</span></p><p><span> </span></p><p><span>医生查房的时候家属不能在场。仝卓进门的时候代玮已经被查房的动静叫醒了。他还是难受，但是没有继续发热，又因为一天多没有进食而停止了呕吐，看上去只是苍白。</span></p><p><span>“代代。”仝卓叫他一声，伸出手去。代玮没动，任由仝卓拨开他眼前的碎发，整理他的衣领，然后把手伸进被子里握住他的手指。他没力气动，手背还扎着针，长时间的液体注射让他摸起来像一块冰。</span></p><p><span>这手似乎是捂不热的。代玮感受到仝卓温热的掌心贴在自己手上，皮肉似乎跟着温热起来了，但是骨头还是冷的，冷得发痛。注射液缓慢地流过，把温度带走。门口有人说话，护士叫了两声“2床家属”，于是仝卓帮他掖好被子，出门去了。</span></p><p><span> </span></p><p><span>“我们签了意定监护。”仝卓说，“所以我可以当他的监护人。”他端坐着，双手交握放在桌上，语气平稳。</span></p><p><span>之前高杨和黄子弘凡把代玮送急诊，又从急诊转入消化内科的住院部，代玮说不出话来，高杨两人又说不清楚，因而病史并没有收集得多清晰，如今仝卓来了，对着管床医生的问题一条条补充。</span></p><p><span>“是和喝咖啡有关吗？……他们最近排练，每天都喝很多咖啡，饮食也不能保证，工作压力大。对，胃一直不好，以前看过病，有开药吃。”仝卓停下来，翻手机，把照片给医生看，“开的是这两种药。”</span></p><p><span>没有人能比他更了解代玮的一举一动了。哪怕他在外省拍戏，几个月几个月地回不了家，这世界上也再没有人能够更了解代玮了。</span></p><p><span>这是他的代玮啊。</span></p><p><span> </span></p><p><span>代玮终于能清楚说话的时候，仝卓正在接受经纪人劈头盖脸的教育。鉴于自然灾害导致剧组停工，他的行为倒是没有给剧组造成什么麻烦——但是给热搜造成了太多的麻烦。</span></p><p><span>#</span><span>仝卓 深夜医院#</span></p><p><span>#</span><span>仝卓 高杨 黄子弘凡#</span></p><p><span>#</span><span>仝卓 剧组#</span></p><p><span>这些都没有什么，直到一条叫#仝卓 代玮#的热搜出现在热搜栏里，从第40蹿到第28，之后一路直上热搜第一。</span></p><p><span>1.#仝卓 代玮#</span></p><p><span>2.#仝卓 深夜医院#</span></p><p><span>他们的恋情在业内不是秘密。随着热搜愈吵愈烈，他们当年参加的综艺《声入人心》又一次回到大众面前，这一次人们才发现那些节目里的小动作、不经意溜出口的一句话、一个没有控制住的眼神，早早就为后来埋下了引子。那个当初在镜头面前随口说出“我家代代”的仝卓被迫带着他的代玮出现在世人审视的镜头下。</span></p><p><span>他们的表演视频被扒得一干二净。这一切被赤裸裸地剖开展示在所有人面前的时候，爱情反而变得理所应当了。他们似乎就理应在一起：一个热烈跳脱，一个安静内敛。</span></p><p><span>幸好流言虽然伤人，有时却鞭长莫及。人们可以审视，可以围观可以八卦，却无权对两个人的伴侣选择有所置喙。代玮不是娱乐圈的一员，对他的环境来说这一切根本无关紧要；而人们更无资格对仝卓品头论足——他28岁凭借一部小众文艺片拿下人生第一个学院派影帝，自此以非专业出身成为年轻实力演员的典型代表。</span></p><p><span>对这二人来说，舆论只显得多余又可笑。</span></p><p><span>让他们说去呗。代玮无所谓。仝卓也不再看手机，只靠在椅子上没调儿地瞎哼哼。</span></p><p><span>代玮拿着书三心二意地看，只觉得那声音乱七八糟地钻进脑子，一会儿成个谱子，一会儿又破碎成一地音符。像蚊子。他一个没注意把心里话说出了口。</span></p><p><span>“代代！”仝卓抗议。</span></p><p><span>“要是嗓子痒痒就回家练声去。”代玮毫不留情地吐槽，“我听了半天硬是没听出调来，你退步了。”</span></p><p><span> </span></p><p><strong><span>B</span></strong></p><p><span>2床的家属有一副好嗓子。他们同病房的有个孩子，因为反复的病情总是哭闹，扰人休息也没有办法。病痛总是折磨人的，只能互相体谅。如果哄一哄就能不痛了，那要我们医生做什么呢？</span></p><p><span>但是2床的家属来了之后一切都变了。那个叫仝卓的男人每天雷打不动地踩点进门陪护，一直坐到允许探视的最后一分钟才走。他们隔壁的孩子哭闹的时候，仝卓就开始小声唱歌——他会唱的歌实在是太多了，那些曲调那些歌词被他演绎得淋漓尽致：深情的、温柔的、恳切的、祈求的期盼的热烈的……他唱歌的时候那孩子就不哭了，2床的病人总是靠着枕头看着他笑，也不说话。</span></p><p><span>代玮是个让人省心的病人，他一直都很配合，也很安静，没有什么任性的要求或者拒绝治疗的情况发生。他嗓子疼，于是也不吭声，我们查房的时候他只点头、摇头，末了冲着我们笑一笑。他实在很好看——我才知道原来他是一名相当出色的男中音，也是一名音乐剧演员。</span></p><p><span>“你可不能这样折腾自己了，嗓子要倒的。”我跟他说，他就露出一副让人心软的认错表情来。我自是知道这很难做到——各行各业都有自己的难处，谁要是让我每天按时睡够8小时不喝咖啡不熬夜，那我非得跳起来说他不懂事不可。我于是跟仝卓也强调了一番，看见他把能吃的不能吃的一条条列在手机备忘录里。得益于他的手机，我在他回来的那天就补充完整了代玮的病史：别人的手机里总是放爱人的照片，他的手机里却单独有一个相册，拍的全是代玮用过的或者一直在用的药。这种病人家属比起那些张口就说“我哪里记得”的要靠谱太多，如果可以，我真想给他俩评一个“模范病人及家属”。</span></p><p><span>护士们知道这件事情之后啧啧称奇。我不解，问她们怎么了，她们只问我知不知道仝卓是谁。我并不知道。我是一个远离社交媒体的人，又没有太多休闲娱乐的时间，哪怕天王巨星来了我也只当他是普通人。</span></p><p><span>“你看你看。”护士妹妹把她的手机塞给我，屏幕上的热搜第一醒目地写着“#仝卓 代玮#【爆】”。</span></p><p><span>我抓紧时间浏览了一番，记住了他们当时参加的节目的名字，又从成员中发现了当初送代玮来的那两个男人。此时我才明白为什么这段时间里总有人问我是不是有个叫代玮的病人在我们医院，我只庆幸因为保护病人隐私，早就以“不知道”三个字把他们通通打发走了。</span></p><p><span>经此一事，我们科室的年轻姑娘们大都拜倒在了仝卓的嗓音下。他本人和他的音色确实很搭，都热情明亮，相比之下代玮的音色则与外形有着巨大的反差。</span></p><p><span>我本以为代玮是一个流行歌手，唱点温柔的含情脉脉的电视剧主题曲——他长得实在像那种青春偶像剧里穿着白衬衫的学长，可能还会弹一弹吉他——直到我听到他的男中音。</span></p><p><span>人在做自己喜欢的事情的时候是会发光的。我看到的视频里，舞台上的他和平日的他几乎全然不同。</span></p><p><span>“我以前不是这样的。”我去好奇地问过代玮，得到了这样的回应。已经过了探视时间，仝卓不在，只他一人。“我第一次上《声入人心》的时候真的很紧张，慌到脑子里一片空白。那时候年轻、经验不足，也没有什么自信。”他笑起来，还带一点腼腆。</span></p><p><span>那仝卓呢？我问。</span></p><p><span>他不一样。代玮回忆着，他觉得自己不够好，但是在那个年龄段里已经是相当优秀的了。“你听过他唱《九儿》吗？就最后一期，也是我最喜欢的一首。”代玮说，“我一直觉得他没有继续唱民歌是个遗憾。”</span></p><p><span>遗憾与否我作为旁观者无法评判，如人饮水，冷暖自知。我只知道如果仝卓没有进入影视圈，可能如今他也不会在社交媒体上掀起如此大的风波。但代玮看起来并不在意。</span></p><p><span>我只能说：看起来。</span></p><p><span> </span></p><p><strong><span>A</span></strong></p><p><span>仝卓是害怕这一切发生的。</span></p><p><span>似乎一切事情都早早在他们相遇的那一天埋好伏笔，只等着漫长的岁月把引线燃尽，然后在不知什么时候轰然爆炸。</span></p><p><span>有时候他想，如果当年他没有去当一个演员，而是一直在声乐的路上走下去，今天会是什么样的？他会在做什么？</span></p><p><span>他会小有成就吗？还是终究默默无闻，成为某些人记忆里的一小片影子？</span></p><p><span>无论是哪种，他都不会在如今遭到这样的舆论和阻力。</span></p><p><span>他自认为把担心和压力收得很好，叠成一个小块放在代玮此刻看不到的那部分生活里。那里充斥着流言、杂音、舆论、责骂。他把它们都放在病房外面的世界，于是他看起来就是毫不在意的。</span></p><p><span>“你就打算一直装下去？等代代出院了怎么办？”高杨质问他，“我不相信代代不知道这件事情。他比你想象的还要敏感，你们两个就互相装，到时候都没法收场。”</span></p><p><span>仝卓苦笑。</span></p><p><span>“这件事情你没有错，他也没有错，有什么好瞒着的？”</span></p><p><span>“我是怕影响他心情，最后又刺激到病情。”仝卓说，“是，这不是个办法，你总得给我点时间。”</span></p><p><span>高杨嗤之以鼻：“你拉倒吧。这是一种不信任。”</span></p><p><span> </span></p><p><span>这是一种不信任。</span></p><p><span>仝卓在病房门口转了三圈，心里念着这句话，进了房间。代玮已经醒了，朝他招手。于是仝卓走过去坐下。</span></p><p><span>“你说吧，坦白从宽抗拒从严。”代玮说。仝卓感觉自己不受控制地露出诧异来：“你都知道？”</span></p><p><span>“基本都知道？”代玮说，“算了算三天了，你也该跟我说了。你不说高杨也要找你的。”他伸出手去，被仝卓一把抓住。</span></p><p><span>“乖代。”仝卓慨叹一声，把脸埋进被子里。代玮换一只手摸了摸他的头发，于是他又闷着声音叫一声“我的代代”。</span></p><p><span>他自以为的隐瞒在爱人面前都是透明。</span></p><p><span>“下次不要再这样了，”代玮说，“我都替你着急。”</span></p><p><span>“这样……？”仝卓依旧闷在被子里，抬一点头，露出一只眼睛看代玮。代玮托着下巴若有所思地看他。</span></p><p><span>“闭上眼睛听。”代玮说，于是仝卓闭上眼睛。</span></p><p><span>声音统治了世界。有隔壁病房电视机的响动，有护士推着小推车的轮子滚动声，更远处有纸张翻阅声和家属说话声。</span></p><p><span>“你进来之前在门口徘徊了三圈，我听到你的脚步声。”代玮低声说，“在所有的声音里，你是最特别的。”</span></p><p><span> </span></p><p><span>“以前我很怕会出现今天这种局面。”人言可畏，一万个人说的话就能形成滔天的巨浪，可两个人几乎什么都不是。他自知没有那么自信可以顶得住种种流言：他以前连下面只坐着几百上千人的舞台都害怕。忽然有一天像有探照灯落在台上，下面是乌泱泱看不清的连绵的人群，娱乐圈是场大戏，你方唱罢我登场，人人粉墨颜面，只他茫然一片。他不是圈中人，不了解其中微妙，只能靠边再靠边希望不被注意，而他的目光都放在台中央上。</span></p><p><span>台中央是仝卓。他看上去游刃有余，一如当年在舞台上放声竭力地唱歌的模样。灯光闪烁、交汇、移动，中心始终是他。</span></p><p><span>“但是如今没有什么大不了的。”</span></p><p><span> </span></p><p><span>热搜挂了好几天，把两人连带着朋友都扒了个干净，没扒出什么黑料来，吃瓜群众这才偃旗息鼓。当年梅溪湖的兄弟挨个冒了泡，谴责媒体没有底线窥探他人私生活，又引发一片争论。吵过一轮两轮，有大V出来点评：人家仝卓靠的是文艺片，代玮靠的是音乐剧，哪个受众都不大，谈个恋爱却要被全天下来指指点点，网民十足多管闲事。</span></p><p><span>是了。代玮刷着微博，随手点下一个赞。他快出院了，仝卓也已经复工，生活好像又要重回忙碌的正轨。</span></p><p><span>微博推荐跳出来新的剧组访谈，封面正是仝卓。</span></p><p><span>“这部戏也快杀青了，接下来有什么工作计划吗？”</span></p><p><span>“有的，”仝卓对着镜头笑起来，“工作计划就是回家好好陪陪爱人，休息一段时间。”</span></p><p><span>“休息的话有旅游安排吗？”</span></p><p><span>“目前还没有。我挺少回家的，想来秋天要到了，杭州应该会很美吧。”</span></p><p><span> </span></p><p><span> </span></p></div>
+</body>
+</html>

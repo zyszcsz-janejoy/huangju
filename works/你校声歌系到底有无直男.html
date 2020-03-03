@@ -1,0 +1,509 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title></title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    padding-bottom: .3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+   padding-bottom: .3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+
+</style>
+</head>
+<body class='typora-export os-windows' >
+<div  id='write'  class = 'is-node'><center>你校声歌系到底有无直男?</center><p><span>RT，我要怀疑人生了</span></p><p><span>1L楼主</span></p><p><span>？火速进来吃瓜</span></p><p><span>2L</span></p><p><span>是什么让楼主发出了这样的感慨？</span></p><p><span>3L</span></p><p><span>先说：我觉得无</span></p><p><span>然后楼主你干嘛了？</span></p><p><span>4L</span></p><p><span>合理怀疑受刺激了，比如偶遇狗男男打啵</span></p><p><span>5L</span></p><p><span>这不是学校里每天都发生的事情吗（？</span></p><p><span>6L</span></p><p><span>楼上说出你的故事</span></p><p><span>7L</span></p><p><span>梅溪湖边散步你值得拥有，男男女女男女各种搭配</span></p><p><span>8L</span></p><p><span>看来8楼是经常去啊</span></p><p><span>提醒一句，常在湖边走（</span></p><p><span>9L</span></p><p><span>楼上似乎在暗示什么不过我没有听懂呢嘿嘿嘿</span></p><p><span>10L</span></p><p><span>不是的，我在想，我在声歌系有见过直男吗？</span></p><p><span>11L楼主</span></p><p><span>……楼主这个层数，见过了大概也不会是你的</span></p><p><span>12L</span></p><p><span>楼上扎心了哈哈哈哈哈哈哈哈哈哈哈</span></p><p><span>13L</span></p><p><span>我竟然认真思考了一下我的声歌系的朋友们</span></p><p><span>他们都是弯的……</span></p><p><span>14L</span></p><p><span>？楼上不要用少数指代多数</span></p><p><span>15L</span></p><p><span>哎，我今天被朋友一句话点醒为什么没法脱单……</span></p><p><span>而且我是校文艺部的，认识那么多声歌系同学，真的没有直男……</span></p><p><span>16L楼主</span></p><p><span>我缓缓打出一个问号</span></p><p><span>17L</span></p><p><span>回复16L：怎么可能？？？高杨啊？？他之前校报采访不是才说了自己理想型吗！</span></p><p><span>18L</span></p><p><span>18L，采访那种套话你也信啊</span></p><p><span>19L</span></p><p><span>？？？？</span></p><p><span>20L</span></p><p><span>盲猜18L梦碎今晚</span></p><p><span>21L</span></p><p><span>可太惨了，给18L指个路：【八卦】作曲系那个黄子弘凡是谁</span></p><p><span>22L</span></p><p><span>黄子弘凡，好聒噪一男的</span></p><p><span>23L</span></p><p><span>笑死，楼上你这样说小心被高杨定向爆破</span></p><p><span>24L</span></p><p><span>？高杨和黄子弘凡在一起？？</span></p><p><span>25L</span></p><p><span>楼上醒醒，25世纪了，您刚解冻吗</span></p><p><span>26L</span></p><p><span>我真傻，真的，我单知道声歌系男生多，却不知道他们都是弯的</span></p><p><span>27L楼主</span></p><p><span>合理猜测，楼主是不是声歌系的女同胞？</span></p><p><span>28L</span></p><p><span>是，我感觉自己很多余</span></p><p><span>29L楼主</span></p><p><span>“梁朋杰也是这么想的。”</span></p><p><span>30L</span></p><p><span>楼上内涵四月！！举报了！！</span></p><p><span>31L</span></p><p><span>停一下，停一下，我有点好奇，高杨和黄子弘凡怎么搞到一起的，他俩差了三岁呢，还不是同一个系</span></p><p><span>32L</span></p><p><span>同性相吸——</span></p><p><span>33L</span></p><p><span>楼上有毒啊！</span></p><p><span>34L</span></p><p><span>认真回答32L：他俩都是我们文艺部的，就那么认识了……</span></p><p><span>35L楼主</span></p><p><span>我懂了，帅气学弟进入文艺部，一眼爱上清秀学长</span></p><p><span>36L</span></p><p><span>楼上你说反了，是高杨拐的黄子</span></p><p><span>37L</span></p><p><span>啊？？？？</span></p><p><span>38L</span></p><p><span>这个我知道，文艺部之前招新就是羊去面试的黄子来着，我还多看了两眼，觉得他俩反差好好笑</span></p><p><span>39L楼主</span></p><p><span>什么反差，楼主你说清楚[高杨皱眉.jpg]</span></p><p><span>40L</span></p><p><span>我夸高杨白！行了吧！那时候不是新一届的刚军训完吗！</span></p><p><span>41L楼主</span></p><p><span>哈哈哈哈哈哈哈哈哈哈哈哈哈哈我想象了一下画面有点美</span></p><p><span>42L</span></p><p><span>楼上不用想象，这就来图了[黑子弘凡.jpg]</span></p><p><span>43L楼主</span></p><p><span>我头笑没了</span></p><p><span>44L</span></p><p><span>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈我的妈啊</span></p><p><span>45L</span></p><p><span>43L你完了哈哈哈哈哈哈哈哈哈哈哈哈高杨立刻来断你网线</span></p><p><span>46L</span></p><p><span>我当时看到的就是这样的反差，所以一直以来我都非常怀疑羊是怎么看上黄子的</span></p><p><span>47L楼主</span></p><p><span>还能怎样，山丹丹花开红艳艳啊</span></p><p><span>48L</span></p><p><span>声入羊心嘛（。</span></p><p><span>49L</span></p><p><span>说实在的，新生音乐会上那个山丹丹花开红艳艳，谁想得到他是个学现代音乐制作的……</span></p><p><span>50L</span></p><p><span>我还以为我校民歌专业终于后继有人了</span></p><p><span>51L</span></p><p><span>此处应该召唤仝卓</span></p><p><span>52L</span></p><p><span>仝卓知道他哈哈哈哈哈哈哈哈，当初节目单出来他跟我确认了两遍这首歌，还特意跑去听了彩排</span></p><p><span>53L楼主</span></p><p><span>他？仝卓？特意跑去听黄子弘凡彩排？</span></p><p><span>楼主你这话我咋不太信呢</span></p><p><span>54L</span></p><p><span>要说仝卓是去看代玮彩排顺便瞅一眼黄子，我是信的</span></p><p><span>55L</span></p><p><span>我脑海里立刻浮现了那晚的酸臭味</span></p><p><span>56L</span></p><p><span>楼上通感不错哈</span></p><p><span>57L</span></p><p><span>草，别提，我也想起来了</span></p><p><span>仝卓跟个孔雀似的，能不能跟高杨学学，矜持点</span></p><p><span>58L</span></p><p><span>羊那是有爱豆的表情管理能力，凡人做不到[石凯吃柠檬.jpg]</span></p><p><span>59L</span></p><p><span>楼上！！不要！！内涵我们凯！！！</span></p><p><span>60L</span></p><p><span>笑吐了dbq</span></p><p><span>61L</span></p><p><span>回复55L：不排除这个可能……</span></p><p><span>62L楼主</span></p><p><span>嗐，我好好一个代学长，怎么就被孔雀拱了呢</span></p><p><span>63L楼主</span></p><p><span>楼主这话我听出了很多重意思</span></p><p><span>64L</span></p><p><span>我不是，我没有，别瞎说</span></p><p><span>65L楼主</span></p><p><span>对！！！我附议！！！代玮！！声歌系男生千千万！！你怎么就被一个唱民歌的拐走了！！！</span></p><p><span>66L</span></p><p><span>楼上冷静哈，冷静点</span></p><p><span>67L</span></p><p><span>我冷静不下来5555555去年舞台上的代学长是我的白月光我的朱砂痣我永远的初恋5555555555</span></p><p><span>68L</span></p><p><span>去年代玮唱Luna之前已经脱单了（指出）</span></p><p><span>69L</span></p><p><span>69L做个人吧</span></p><p><span>70L</span></p><p><span>人总要面对现实的</span></p><p><span>71L</span></p><p><span>有1说1，仝卓唱民歌是真的帅，眼睛都是亮的</span></p><p><span>72L</span></p><p><span>他当时还真心实意去问黄子弘凡想不想转专业去唱民歌来着</span></p><p><span>73L</span></p><p><span>黄子：不想，勿念</span></p><p><span>74L</span></p><p><span>Xswl</span></p><p><span>75L</span></p><p><span>黄子一个连小白杨都不会唱的人！到底怎么被羊看上的！</span></p><p><span>76L</span></p><p><span>不知道（。大概就是……就这么看对眼了吧</span></p><p><span>77L</span></p><p><span>不过黄子入学之前，我是怎么都没想过高杨喜欢这种黑泡少年的……</span></p><p><span>78L楼主</span></p><p><span>羊看起来很贵气啊</span></p><p><span>79L</span></p><p><span>对，而且他说话慢条斯理，做事也慢条斯理，像个老大爷，上世纪名门望族的那种</span></p><p><span>80L楼主</span></p><p><span>楼主这个形容，我简直可以脑补一本小说</span></p><p><span>81L</span></p><p><span>可以，但没必要</span></p><p><span>82L</span></p><p><span>他原来在部门里不怎么说话的！就是安安静静开会，有时候自娱自乐唱唱歌，所以之前我跟他其实很不熟。准确地说大家都跟他不太熟</span></p><p><span>结果黄子弘凡来了之后我感觉我们部门就不能再成为文艺部了，简直是一个养殖中心</span></p><p><span>83L楼主</span></p><p><span>我感觉楼主暗搓搓内涵了很多人</span></p><p><span>84L</span></p><p><span>没有，让我把炮火精准指向一个人</span></p><p><span>主要是，黄子进部门之后，我的天哪，我这辈子就没有见过说话那么快，说得那么多的高杨……他仿佛被人打开了什么讲话开关</span></p><p><span>85L楼主</span></p><p><span>楼主的描述听起来更像是两个人暗地里展开了什么说话battle</span></p><p><span>比谁一天先说够500句这样</span></p><p><span>86L</span></p><p><span>那肯定是高杨赢，高杨：“哈。哈。哈。哈。哈。”五句了！</span></p><p><span>87L</span></p><p><span>楼上我掐指一算，十分钟内你必定断网。</span></p><p><span>88L</span></p><p><span>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</span></p><p><span>89L</span></p><p><span>哦说到说话特别慢的，我想起来了，刘彬濠</span></p><p><span>90L楼主</span></p><p><span>山楂！山楂学长！！！</span></p><p><span>91L</span></p><p><span>山楂说话是真的慢，校报采访视频我都是开1.5倍速看的orz</span></p><p><span>92L</span></p><p><span>山楂的语速仿佛设置了什么恒定模式</span></p><p><span>93L</span></p><p><span>同意，但是我真的舍不得加速看视频，他好好看……</span></p><p><span>94L</span></p><p><span>对对对对对！！</span></p><p><span>而且别人的采访我可能盯脸就忘记听内容，山楂的不会，他语速太慢了我都不会错过每个字</span></p><p><span>95L</span></p><p><span>希望英语听力都是这个语速</span></p><p><span>96L</span></p><p><span>又做梦了是吗</span></p><p><span>97L</span></p><p><span>而且发音很标准没什么口音，说真的，我听睡着过，很催眠（没有说无聊的意思）</span></p><p><span>98L</span></p><p><span>这是好主意哎！我也想要这么温柔的男孩子哄我睡觉，决定了，今晚就听他的采访入睡！</span></p><p><span>99L</span></p><p><span>说真的，文艺部有没有考虑让你们的成员录点什么早安晚安音频，大家这么好的嗓子不要浪费啊</span></p><p><span>100L</span></p><p><span>我们想过，被扼杀了[微笑.jpg]男人的占有欲，我不懂</span></p><p><span>101L楼主</span></p><p><span>笑死，那就都录呗，还能互相吃醋怎么的？</span></p><p><span>102L</span></p><p><span>回复102L：也有人不是文艺部的啊，陈博豪就不是，他话剧社的……</span></p><p><span>103L楼主</span></p><p><span>等等，关陈博豪什么事？？？</span></p><p><span>104L</span></p><p><span>他山楂男友啊</span></p><p><span>105L楼主</span></p><p><span>……好的，打扰了，告辞</span></p><p><span>106L</span></p><p><span>他不是表演系的吗？</span></p><p><span>107L</span></p><p><span>表演系的又不是不能谈恋爱</span></p><p><span>108L</span></p><p><span>不是，我是说，这跨度有一点点大，羊和黄子好歹还是声歌和作曲，代和卓都是声歌的，表演系平常和声歌系有来往吗？</span></p><p><span>109L</span></p><p><span>有啊，社团啊。社团里不是什么专业都有嘛</span></p><p><span>110L</span></p><p><span>问题是山楂也不是话剧社的？</span></p><p><span>111L</span></p><p><span>四月是啊，然后四月和山楂是老乡，这不就搭上了吗</span></p><p><span>112L</span></p><p><span>楼上说得似乎很有道理，但是真实情况是山楂去看了一场话剧社的表演</span></p><p><span>然后陈博豪又去看了山楂的师生音乐会</span></p><p><span>113L</span></p><p><span>后来山楂抢不到琴房，陈博豪就把卡借他了</span></p><p><span>114L</span></p><p><span>楼上怎么知道的？</span></p><p><span>115L</span></p><p><span>因为那天我也是一个没抢到琴房的可怜人，在楼下孤独寂寞地徘徊，眼见着山楂被塞了卡</span></p><p><span>116L</span></p><p><span>有的人只能独徘徊）</span></p><p><span>117L</span></p><p><span>楼上！闭嘴！</span></p><p><span>118L</span></p><p><span>生活太难了，为什么我抢不到琴房就算了，还要被别人喂狗粮</span></p><p><span>119L</span></p><p><span>咱也不知道，咱也不敢问</span></p><p><span>120L</span></p><p><span>其实我也想看这六个同台一次</span></p><p><span>121L</span></p><p><span>同台干嘛？讲群口相声吗？</span></p><p><span>122L</span></p><p><span>唱歌！唱歌行了吧！文艺部不能考虑一下🐴，六个不同类型的帅哥哎</span></p><p><span>123L</span></p><p><span>楼上你说得好容易，三对xql会搞死我们的好吗</span></p><p><span>124L</span></p><p><span>？我竖起了耳朵，怎么个搞法，让我听听</span></p><p><span>125L</span></p><p><span>不负责任猜测，xql公然tla？</span></p><p><span>126L</span></p><p><span>首先羊和黄两个人已经可以组成对口相声，从台下讲到台上</span></p><p><span>其次卓对代真的占有欲过分，唱歌根本全程盯代不看镜头</span></p><p><span>你觉得山楂和博豪还有机会说话吗</span></p><p><span>127L楼主</span></p><p><span>我比较好奇以上经验怎么来的，xql不是没同台过吗</span></p><p><span>128L</span></p><p><span>文艺部年终小汇演……或者说是考核……</span></p><p><span>129L楼主</span></p><p><span>懂了，懂了，你们辛苦了</span></p><p><span>130L</span></p><p><span>倒是不辛苦，就是耳朵累了点</span></p><p><span>131L楼主</span></p><p><span>举手）楼主我想知道你们年终考核会录像吗</span></p><p><span>132L</span></p><p><span>会啊，录来当收藏，因为每年都超搞笑，还可以胁迫帅哥唱奇奇怪怪的东西</span></p><p><span>133L楼主</span></p><p><span>奇奇怪怪的东西？？</span></p><p><span>134L</span></p><p><span>比如让代玮唱rap？</span></p><p><span>135L</span></p><p><span>？？？？？？？？？？？？？？？？？？？？？？？？？？？</span></p><p><span>136L</span></p><p><span>…他还真唱过</span></p><p><span>137L楼主</span></p><p><span>？？？？？？？？？？？？？？？</span></p><p><span>138L</span></p><p><span>忽然觉得我手机里那些陈博豪耍杂技的视频都不香了</span></p><p><span>139L</span></p><p><span>这还是香的！！帅哥劈叉帅哥侧手翻谁不爱呢！！！！</span></p><p><span>140L</span></p><p><span>我诚恳建议陈博豪去杂技社，话剧社局限了他的发展</span></p><p><span>141L</span></p><p><span>那样山楂可能就不会看上他了</span></p><p><span>142L</span></p><p><span>xswl，山楂坐在台下看杂技忽然一见倾心，这是马戏之王吗</span></p><p><span>143L</span></p><p><span>？？哈哈哈哈哈哈哈哈哈哈哈哈哈停下，脑袋里有声音了</span></p><p><span>144L</span></p><p><span>我还是比较想知道代玮唱rap是什么操作</span></p><p><span>145L</span></p><p><span>不，不知道，听起来实在太魔鬼了，为什么要为难代代</span></p><p><span>146L</span></p><p><span>@楼主，能不能分享一下他们都私下里唱过啥</span></p><p><span>147L</span></p><p><span>不能哈哈哈哈哈哈哈哈哈哈不然帅哥名声不保就出大问题</span></p><p><span>148L</span></p><p><span>他们有过名声？</span></p><p><span>149L</span></p><p><span>曾经，曾经有过</span></p><p><span>150L</span></p><p><span>有的现在也有好吧，山楂就没崩过</span></p><p><span>151L</span></p><p><span>山楂保持设定的能力如同羊的表情管理</span></p><p><span>152L</span></p><p><span>嗐，羊现在也崩了，我就没见过那么活泼一羊</span></p><p><span>153L</span></p><p><span>我记得文艺部最开始给自己的招新定位是“文艺王子”</span></p><p><span>154L</span></p><p><span>这个谁想的…………</span></p><p><span>155L</span></p><p><span>我们部长……事实证明根本做不到……</span></p><p><span>156L楼主</span></p><p><span>当初看到这个招新宣传我真的笑晕了，你想想，前面那么多帅哥美女练早功，唱歌，跳舞，然后舞台超级酷炫，最后出来一个文艺王子的形容……</span></p><p><span>157L</span></p><p><span>我笑晕了</span></p><p><span>158L</span></p><p><span>“学艺术的人，他就不能熟”</span></p><p><span>159L</span></p><p><span>羊说得对，而且完美贯彻了这句话</span></p><p><span>160L</span></p><p><span>希望大家都保持一点人与人的距离））</span></p><p><span>161L</span></p><p><span>特意指出：希望xql们也保持一点距离，我快闪瞎了</span></p><p><span>162L</span></p><p><span>比如那个仝能不能不要总粘着那个代</span></p><p><span>163L</span></p><p><span>算了吧，他俩没有安全距离，隔着两个人唱歌也好像在二重唱</span></p><p><span>上次看他俩候场，仝卓那个动手动脚的真是不消停，代：沉稳地任人上下其手</span></p><p><span>164L</span></p><p><span>代代已经对此习以为常甚至免疫了，好几次我看见他无动于衷地扭头去跟高杨对词</span></p><p><span>能不能让仝代羊黄四个人同台一次，xql交叉占位，我想看</span></p><p><span>164L</span></p><p><span>仝羊代黄←这样？楼上你是魔鬼吗？</span></p><p><span>165L</span></p><p><span>提问：这种占位下，羊是在看代还是在看黄，代是在看羊还是在看仝</span></p><p><span>166L</span></p><p><span>众所周知，羊代室友情也是非常感天动地的</span></p><p><span>167L</span></p><p><span>那就这样：仝黄代羊</span></p><p><span>或者：黄仝羊代</span></p><p><span>168L</span></p><p><span>楼上是一定要一个人心碎吗</span></p><p><span>169L</span></p><p><span>修罗场谁不爱呢！！神仙室友情它不好嗑吗！！</span></p><p><span>170L</span></p><p><span>黄仝二人提刀赶来</span></p><p><span>171L</span></p><p><span>你们搅和吧，我们博彬独美（冷眼旁观.jpg）</span></p><p><span>172L</span></p><p><span>博彬太低调了，感觉都没怎么见他们一起出现过……是避嫌吗？</span></p><p><span>173L</span></p><p><span>我估计不是避嫌，只是因为课程区别太大所以没空</span></p><p><span>然而谁知道这两人在校外一起租房呢（</span></p><p><span>174L</span></p><p><span>？？？？？？？？？？？</span></p><p><span>175L</span></p><p><span>还养了两只猫</span></p><p><span>要不是我交叉对比他俩朋友圈照片背景，根本发现不了他俩居然（</span></p><p><span>176L</span></p><p><span>是我天真了，没想到没想到……</span></p><p><span>177L</span></p><p><span>我也是后来偶然发现的</span></p><p><span>有次部门活动，山楂说他有事，直接路上和我们汇合，然后大家眼睁睁看着他和博豪一起走出了小区……</span></p><p><span>之后他就被我们严刑拷打了（x</span></p><p><span>178L楼主</span></p><p><span>地下恋情终曝光！山楂弟弟神秘男友竟然是——</span></p><p><span>179L</span></p><p><span>俺笑晕了</span></p><p><span>180L</span></p><p><span>不过在那之前我一直以为山楂看起来特别纯情应该还没有谈过恋爱……</span></p><p><span>181L楼主</span></p><p><span>谁知道不光谈了还同居了（</span></p><p><span>182L</span></p><p><span>果然声歌系男的名不虚传，都是蛊王</span></p><p><span>183L</span></p><p><span>而且蛊法各有不同</span></p><p><span>184L</span></p><p><span>比如那个羊，出门右转拐了一个回来</span></p><p><span>185L</span></p><p><span>然后那个卓和那个代也不知道谁蛊的谁</span></p><p><span>186L</span></p><p><span>他俩属于内部消化</span></p><p><span>187L</span></p><p><span>内部消化那也还是代代蛊的卓，他之前在新生音乐会上穿了个红西装，仝卓当场就被蛊了，我印象深刻</span></p><p><span>188L楼主</span></p><p><span>我记得我记得哈哈哈哈哈哈下场直接拦住加微信，震撼我们后台</span></p><p><span>189L</span></p><p><span>还有那个山楂（点名批评）怎么就被表演系的拐了？？？？不应该啊？？？声歌系的他不香吗？？</span></p><p><span>190L</span></p><p><span>？？香不香不知道，弯是真够弯的</span></p><p><span>山楂：害怕.jpg</span></p><p><span>191L</span></p><p><span>山楂：他们太聒噪，我格格不入</span></p><p><span>192L</span></p><p><span>不！要！内！！涵！我！们！黄！</span></p><p><span>193L</span></p><p><span>你又知道我在说谁哈哈哈哈哈哈哈哈哈不是我说的</span></p><p><span>194L</span></p><p><span>………</span></p><p><span>走了，勿念</span></p><p><span>195L</span></p><p><span>所以回答一下帖子问题：声歌系有直男吗？没有</span></p><p><span>196L</span></p><p><span>心疼一下楼主，要不你也去找个女朋友吧</span></p><p><span>197L</span></p><p><span>我！！不！！！我要在他们中间做一个骄傲的单身贵族！！！！</span></p><p><span>198L</span></p><p><span>然而大家不会觉得你单身贵族（。）</span></p><p><span>199L</span></p><p><span>可以了憋说了啊啊啊啊啊啊啊啊你校声歌系为什么这么难顶我真是undingable啊啊啊啊啊</span></p><p><span>200L</span></p></div>
+</body>
+</html>

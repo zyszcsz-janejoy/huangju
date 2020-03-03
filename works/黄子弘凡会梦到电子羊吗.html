@@ -1,0 +1,509 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title></title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    padding-bottom: .3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+   padding-bottom: .3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+
+</style>
+</head>
+<body class='typora-export os-windows' >
+<div  id='write'  class = 'is-node'><center>黄子弘凡会梦到电子羊吗</center><p><span>无处可去的假期也是假期。黄子弘凡进入光脑的聊天室，点了个“随机匹配”。系统转了一会儿，在界面上显示了一个系统默认的卡通小羊头像。</span></p><p><span>他没见过学校里有人用这个头像。艺术学院的学生总是喜欢在方方面面表现自我，使用系统默认头像简直就是在无声大喊“我没有创造力”。犹豫不过两秒，他留在了聊天界面。</span></p><p><span>Lars：你好？</span></p><p><span>Gyon：你好。</span></p><p><span>场面有点尴尬。黄子弘凡盘腿坐起来，对着光脑陷入沉思。</span></p><p><span>Lars：你也是音乐学院的学生吗？</span></p><p><span>Gyon：音乐学院？</span></p><p><span>Lars：对啊，我没有见过这里有人用默认头像的诶，可是这是我们学院的聊天室啊？你是怎么进来的？</span></p><p><span>Gyon：嗯？这不是公共平台吗？我在这个聊天室很久了。</span></p><p><span>Lars：诶——！那你也是学音乐的吗！</span></p><p><span>Gyon：是的。</span></p><p><span>Lars：那肯定是我们学院的啊！你在搞什么！难道现在除了我们学院还有别的音乐学院吗？</span></p><p><span>对面沉默了几秒。</span></p><p><span>Gyon：我已经毕业啦。</span></p><p><span>原来如此。黄子弘凡重新瘫回床上。反正对面也看不到他什么姿势——网聊就这点好的，你永远不知道对面是坐着躺着趴着还是在上厕所还是在洗澡。虚拟电子设备宣称着缩小人与世界的距离，实际上却把隔阂无限放大。你都不知道对面跟你聊天的是真人还是实验室里正在做测试的仿生人。</span></p><p><span>Lars：按你这么说的话，可能你读书的时候聊天室还是对外开放的，不过现在已经关闭啦。只有我们学校的学生才能接进来。所以真的真的很无聊！我还以为又会匹配到同班同学或者专业课老师在线冲浪，还好遇到你哈哈哈哈哈哈哈！</span></p><p><span>Gyon：除了聊天也要多出去走动走动啊。</span></p><p><span>黄子弘凡看了一眼舷窗。外面是一片沉默的黑，飞船正在穿过一个星球相对稀疏的区域，黑暗已经持续了将近三天。预报说明天下午他们将路过最近的一颗恒星，那也离他们有好几亿公里——听上去很远，用光年形容这段距离则显得过于渺小了。</span></p><p><span>他不知道学校是怎么想的，一定要他们这批倒霉的学生在飞船上接受大学教育，美其名曰接受“宇宙艺术”的洗礼，又或者类似听起来挺前卫实际毫无内容的陈词滥调。大家都是从中转站前往新行星，别的学校的学生都和家人一起随政府安排撤离，只有他们，一群荷尔蒙旺盛的孩子和一群满脑子艺术不着四六的教授在这艘飞船上作天作地。说实在也没什么好折腾的。飞船再大也只有有限的空间，想象一下在校园里住上四年，一步都不离开学校是什么滋味？难以描述，黄子弘凡在日记里写到：我现在明白为什么所谓“宇宙艺术”都是充斥着负面情绪的东西了。不是过去的什么性、毒品和死亡，只是纯粹的孤独和渺小。</span></p><p><span>Gyon：你还在吗？</span></p><p><span>Lars：在的在的！刚刚开小差了……</span></p><p><span>Lars：飞船就这么大点也没有什么好走动的啊，我现在除了下面的动力舱之类的没有进过，别的都逛了个遍了。</span></p><p><span>Lars：哦不是，女生宿舍我没去过！！！</span></p><p><span>Gyon：[大笑.gif]</span></p><p><span>Gyon：这是你在飞船上的第几年？</span></p><p><span>Lars：第二年！现在是圣诞假。</span></p><p><span>圣诞。黄子弘凡把消息发出去才反应过来，对着屏幕愣愣地想。在离开地球的宇宙某处庆祝圣诞节，听起来着实是一件非常微妙的事情。其实他们只是需要一个用来缓冲的假期而已，至于它曾经的目的，现在好像已经没有什么人在意了。</span></p><p><span>然而一个用来作为繁忙学业之间的缓冲的假期如今却莫名地消耗了他的精力。黄子弘凡又看一眼窗外：一成不变的黑。他把目光挪回光脑。</span></p><p><span>Gyon：啊，圣诞节啊。你们有装饰一下吗？</span></p><p><span>Lars：装饰？基本没有。飞船上为了安全禁止一切没有实际用途的装饰品——什么叫没有实际用途！让人心情舒畅明明也是一种用途！不过你想想，宇宙漂过一艘像圣诞树一样的飞船，好像也不是那么合适……</span></p><p><span>Gyon：哈哈哈哈哈。</span></p><p><span>Lars：你们，我说你念书的时候，圣诞节有什么活动吗？</span></p><p><span>Gyon：有。我们在圣诞节的时候有很多圣诞市场，在各个广场上卖特色的烘焙点心。我比较常去歌剧院边上那个市场。晚上灯光亮起来，下雪的时候很美。</span></p><p><span>Lars：圣诞市场？我们学院好像没有这样的活动……你在哪里啊？</span></p><p><span>Gyon：维也纳。</span></p><p><span>Lars：那是地球时期的事情了！</span></p><p><span>Gyon：对呀。</span></p><p><span>Lars：！！！所以你是在地球上接受的教育！！</span></p><p><span>Gyon：嗯。</span></p><p><span>Lars：天哪我真的没有想到！！我以为你和我差不多大！！那我是不是应该叫你老师？？？</span></p><p><span>Gyon：嗯？我也才24岁啊。</span></p><p><span>Lars：诶——！</span></p><p><span>黄子弘凡懵了。二十一年前，他出生在“中转站”上。那是中转站停止接收地球移民的第一年。他们并不清楚自那以后地球居民的动向，况且那时他尚年幼，回忆起来只有一些骚乱的新闻报道。政府组织的撤退导致了整个社会的崩溃，教育体系随之崩盘。</span></p><p><span>他隐隐觉得哪里不对。</span></p><p><span>Lars：那你也是CWP专业的吗？</span></p><p><span>Gyon：不是。</span></p><p><span>Gyon：我是学歌剧的。</span></p><p><span>歌剧。黄子弘凡在大脑里努力捕捉有关的信息，可惜只有寥寥几句。这种地球时期的艺术形式没能被中转站保留下来，只随着影音资料永远留在网络上。他的专业课里有相关的知识，但是还没学到。他只看过一些节选出来的片段：端庄、洪亮、壮观。肉眼可见的似乎在空气中起伏流淌着的宣叙调和咏叹调。在某种程度上来说和他的专业相去甚远：都是音乐，是的，都是音乐。只是音乐是无限的，而他们都是有限的。</span></p><p><span>Lars：我还没有去听过歌剧……可能以后也不会有机会了。现在学院没有这个专业了。</span></p><p><span>Gyon在那边沉默片刻，发过来一个文件。</span></p><p><span>Gyon：[文件]</span></p><p><span>Gyon：这是我的毕业演出，给你看吧。</span></p><p><span>Gyon：费加罗的婚礼。</span></p><p><span>Lars：啊啊啊啊啊啊啊谢谢！！！！天哪你太棒了！！！！</span></p><p><span>Lars：等等，你说你24岁？地球上现在还有这么好的剧院吗？</span></p><p><span>Lars：啊对不起，我的意思是，它看起来完全不像是我看到过的地球上的建筑，它看上去很完整，而且很精致。我看到的建筑往往都已经有毁损了。</span></p><p><span>Gyon：这不是现在的歌剧院啦。</span></p><p><span>Lars：可是你不也是前两年毕业的吗？</span></p><p><span>Gyon没说话。</span></p><p><span>于是黄子弘凡新建界面，登录了学校的数据库。继撤离地球之后，他们音乐学院接手了过去所有音乐学院的数据库，包括他们历届学生的考核视频。他在搜索栏里打上“费加罗的婚礼”，又把搜索范围限定在维也纳的学校。</span></p><p><span>搜索结果不多，他一条条点进去看，在第四个视频看到了和文件里一样的表演。与Gyon发给他的私人文件不一样，公共文件上面赫然标着考核学生的个人信息：</span></p><p><span>考核时间：20**年6月</span></p><p><span>考核类型：毕业演出</span></p><p><span>考生姓名：高杨</span></p><p><span>考生年龄：23岁</span></p><p><span>他又看了一眼考核时间，茫然中生出一种错乱感来。如果这个文件的时间是真的，那么现在屏幕那边的高杨显然不是真正的高杨了。</span></p><p><span>这样漫长的时间足以解释为什么Gyon是在地球上的维也纳学的歌剧，为什么他表演所在的剧院看上去那样的宏伟精致，为什么他的圣诞节那样生动热闹——但是他又为什么在屏幕的那一端？</span></p><p><span>Lars：我……我刚才在学校的数据库里搜了你。</span></p><p><span>Lars：你可能不知道，现在我们学校可以搜到过去地球上所有音乐学院存储的数据信息。</span></p><p><span>Gyon：我知道的。</span></p><p><span>黄子弘凡停下手，看消息一条条跳出来。</span></p><p><span>Gyon：其实我给你发的视频也是刚刚从上面下载下来的。[大笑.gif]总不能要求一段记忆还要拥有一个自己的存储器吧。</span></p><p><span>Gyon：我曾经是一个唱歌剧的，男高音，穿着燕尾服站在剧院里唱没有人听的歌剧，你可能很难想象。我知道现在的音乐大致是怎样的：网络传播的新歌、全息影像的演唱会。剧院已经是地球时代的特色建筑了。</span></p><p><span>Gyon：那时候的维也纳很美，音乐之都，精致，优雅，生动，是古典艺术的天堂。所以它小众、矜持、不可高攀。它和现在的音乐很不一样，共同点只是它们都属于音乐。</span></p><p><span>Gyon：后来一切都乱了套，人们说“我们不需要音乐”，把艺术赶出社会。人们要科技，要发展，要去寻找新的生活空间，所以我们靠后站。他们说等一切稳定了新生活重新开始了，艺术就会回来，我没有等到那一天。如今看来这其中时间真的很长。</span></p><p><span>Gyon停了几秒。</span></p><p><span>Gyon：这只是人工智能根据我的记忆做出的反应，真实的我怎么看怎么想，我也不知道了。</span></p><p><span>Gyon：我知道现在的社会还没有仿生人的出现，我只是一段模拟的电子信息罢了。</span></p><p><span>Gyon：那么你今晚会梦到我吗？</span></p><p><span>屏幕闪了两下，再清晰显示的时候已经自动退出了聊天室。黄子弘凡点进聊天系统的用户列表，那个系统默认的卡通小羊安安静静地躺在最底下，仿佛从来没有点亮过。</span></p></div>
+</body>
+</html>
