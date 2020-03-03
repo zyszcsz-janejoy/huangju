@@ -1,0 +1,510 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title></title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    padding-bottom: .3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+   padding-bottom: .3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+
+</style>
+</head>
+<body class='typora-export os-windows' >
+<div  id='write'  class = 'is-node'><p><span>那时候他们都只是这花花世界里的无名一员。</span></p><p><span>陈博豪拿过话筒的时候刘彬濠情不自禁地屏住呼吸，随后又觉得自己像个自作多情的傻子。他抬头看台上，男演员发表简短的感言和致谢，感谢他的朋友，导演，老师，感谢每一个在这个行业里帮助他的人。</span></p><p><span>那我呢。刘彬濠想。我算什么？</span></p><p><span> </span></p><p><span>他们一起度过很漫长很漫长的夏天。没有空调的老居民楼，电扇尖声吹过，桌上的报纸哗地翻过一页，下一刻又被吹回原样。那时候生活总是这样，往前一步又后退一步。他们困在广州黏腻潮湿的永无止境的夏天里，偶尔做爱来消遣生命。</span></p><p><span>刘彬濠记得很多个那样的日子。傍晚总是停电，他们把窗户和阳台都敞开，在穿堂而过的热风里交换温度。竹席变成湿热的一片，在皮肤上压出红痕。他在那床席子上流过好多汗水和眼泪。那时候他才明白原来浸透一个人这样容易。陈博豪会低头来吻他的眼睛，说不要哭不要哭了好不好，然后他会闭上眼睛，再然后他们会接吻。</span></p><p><span>他的记忆里，夏天和陈博豪永远相连。</span></p><p><span>他们从生活里匀出一点空间，养了一只猫。一只豹猫，朋友送的，嚣张跋扈的花纹，睁着无辜的眼睛摆出一副与样貌不符的姿态来。他说像陈博豪，被人压在沙发上一通上下其手，连连告饶。</span></p><p><span>但他确实是这样觉得的。很多年以后他在微博上看见陈博豪晒猫，“拖鞋”，微博上光明正大写着他们一起取的名字。拖鞋的名字来源于他们窘迫的过去。贱名好养活，陈博豪说。所以你要把一只身价比你我加起来还贵的猫叫什么？刘彬濠问。</span></p><p><span>“那也还是我养它！”陈博豪叫起来，一蹬腿把鞋踢飞。他们一起买的塑料拖鞋，边缘已经裂开，孤独地躺在门口。小猫吓了一跳，慢慢蹭过去，试探着咬了一口。</span></p><p><span>“就叫拖鞋吧。”刘彬濠说。陈博豪不可思议地看他，两人对视几秒，拖鞋的主人败下阵来。</span></p><p><span>拖鞋就拖鞋。陈博豪躺倒在沙发向拖鞋伸手：拖鞋啊——</span></p><p><span>于是刘彬濠把猫抱给他。拖鞋咬着一只裂开的拖鞋降落在陈博豪的肚子上，恐慌地一通乱抓。</span></p><p><span> </span></p><p><span>拖鞋在陈博豪的微博里占有了相当大的一席之地，连娱乐采访都要问起来历。而陈博豪总是一笔带过。他的粉丝大多知道他曾经有一段困窘的日子，直到从一部小制作的网剧被人发掘，从此一帆风顺。他似乎对那两年时光怀抱一种难以言说的态度。他可以在几十分钟的采访视频里慢慢地讲起那段过去，夏天的南方，停电的老房，盒饭和泡面，他的猫。但他也对很多细节闭口不言。有粉丝隐约觉出其中另有一人，无奈没有证据。只能说语气——语气，态度，回忆时的表情让人猜测，那段生活里应该不止他一个人。</span></p><p><span>刘彬濠看过他的各种采访。有时候他们甚至一前一后上某个访谈，某个综艺，诸如此类。但是他们并无同台。王晰作为经纪人把他塑造成一颗在节目里才被导师发现的星星，而只有他们几个人才知道那两年他背着吉他走过大街小巷，在酒吧里唱自己写的歌。</span></p><p><span> </span></p><p><span>王晰记得第一次见到刘彬濠的样子。凌晨3点他从酒吧出来，鞠红川跟他唠唠叨叨讲独立工作室的种种重要，劝他跟着周深去做个人工作室。他们合得来，喜好志向相仿，何苦拘泥于一个剥皮吸血的经纪公司在无意义的工作里打转。王晰有一搭没一搭地点头应声，眼见着酒吧后门打开，出来一个男孩。男孩——他凭着感觉这样形容，背着吉他，戴着卫衣帽子，往车站走。他一眼认出来是刚才台上的主唱，于是撇下鞠红川跑上前把人拦住。</span></p><p><span>就这样，在王晰抛弃川子后的三分钟内，刘彬濠遇到了一个转折。</span></p><p><span>他们约好第二天下午在公司楼下见面。这是刘彬濠两周以来第一次出现在日光下。他在这个炽热的夏天里也白得惊人，眼睛却乌黑得像一潭深水。沉静。这是王晰的形容。一双很沉静的眼睛。</span></p><p><span>刘彬濠就这样跟着王晰走了，离开他二十多年来成长的地方，一路向北去。他走的时候陈博豪还在组里，拖鞋只身在家，守着猫粮和半个房子的热闹。“你先住我那。”王晰说。橙色的灯光从拥挤的北京马路上一直淌进车里，刘彬濠往外看，密密麻麻的红色尾灯无止境地排到天边外。</span></p><p><span>极致的停滞下是极致的忙碌。他在王晰的房子里住了一段时间，拿着demo去见了各种老师，有人点头有人摇头。王晰很冷静地面对这一切：“不急，等深深过来。”</span></p><p><span>深深。周深。刘彬濠对着谱子发呆，手机不合时宜地响起来。</span></p><p><span>陈博豪问他：“如果你以后不回来了，我就把房子退掉。”</span></p><p><span>不回了。刘彬濠说。</span></p><p><span>“我也去北京。”陈博豪说，“到时候还能租一起。”</span></p><p><span>“恐怕不行。”王晰靠在门边说，“公司会帮他租房子的。”刘彬濠愕然回头，对上王晰的眼睛。这段时间事情多，他没空打理头发，直落到眼前，遮了半点不苟言笑的视线。王晰走过来。“陈博豪签了公司，那边会安排的。何况，”他顿了顿，似乎在找一个合适的说辞，“你们也不应该再住一起了。”</span></p><p><span>他不知道王晰是什么时候看出这件事的，也许在一开始知道他和人合租的时候，又或者是从他打电话的语气。</span></p><p><span> </span></p><p><span>周深在两周之后终于抵京，开始和王晰一起把他的工作室逐一落实。刘彬濠就这样成了他手下的第一个艺人。一个小艺人，干干净净，一无所有。挺好的，周深笑起来，揉他的头发，你是一颗还没被发现的星星。</span></p><p><span>他开始好忙好忙。终于停下来的时候脑子一片空白，打开手机却不知道能干什么。他的置顶从陈博豪换成了工作室，后者每天上百条消息地滚动着，而前者默不作声。他们上一次发消息还是在一周前。陈博豪也变得好忙好忙。他在上课，试戏，在等一个合适的本子出现。</span></p><p><span>“生活走上正轨了。”王晰这么形容。正轨是什么样的？是新朋友，老师，上课，谱子，录音棚，一支麦克风，热闹的群聊，偶尔的聚餐。</span></p><p><span>独独缺一个人。</span></p><p><span> </span></p><p><span>三个月后刘彬濠上了一个综艺，王晰谈下来的，音乐综艺，为了推出台里的新生歌手。他去当个陪衬，但总有被人看到的机会。</span></p><p><span>音乐人很难。王晰跟他说，你心里知道的。刘彬濠是知道的。他不想在台上唱不知所云的歌，做一些无聊的营业。其实他现在连这个资格都没有。</span></p><p><span>“慢慢来。”王晰说。这是刘彬濠最常听到的一句话。这个工作室似乎在八百里加急的工作中找到一种闲庭信步的态度来，一切都稳步前进。</span></p><p><span>刘彬濠本来对这个节目也没有旁人那样紧张。他拿到节目组的要求和选歌，练歌，排练，彩排，正式录制，然后在等待下一期的短暂间隙里继续给自己写歌。节目不是淘汰制，所以他没有什么好担心的，而这种平静的态度为他招徕了一些粉丝。“周深工作室的艺人”、“大眼睛男孩”，有对他眼熟的观众这样提起他。</span></p><p><span>而他忽然受到大量的关注是因为一个与他毫无相关的娱乐采访——毫无相关，也许可以这样说。陈博豪面对主持人“最近有在看什么节目吗”的提问回答了他参加的那档音乐综艺，并且以一种陌生但好奇的语气提到了刘彬濠。</span></p><p><span>“他的嗓音很好。我还挺期待认识一下的。”陈博豪对着镜头笑起来，眼神真诚。</span></p><p><span>于是粉丝涌进刘彬濠的微博试图撮合他俩认识。刘彬濠点开自己的最新一条微博评论区看了又看，最终只是默不作声地点下一个关注。</span></p><p><span>他们从不互动。但节目组还是因此增加了对他的花絮录制，在他录制以外的时间里总有人带着镜头出现。“可以给我们随便弹点什么吗？”工作人员举着手机问。</span></p><p><span>于是他弹下一段音符。“是以前的demo，没有做完，一直搁置。”他对镜头说，“可能以后也不会有成品。”</span></p><p><span>这段花絮理所当然被放到微博上。刘彬濠不知道陈博豪有没有看过。也许是有的。</span></p><p><span> </span></p><p><span>节目后半段的时候变了赛制，需要选手找助力嘉宾帮唱。“我去我去。”周深在群里发语音，“这种时候就应该是老板出马的嘛。”王晰无语同意。</span></p><p><span>于是当周深戴着面具上台和他唱了一首《山楂树》之后，全场都沸腾了。王晰选的曲子编的和声，由于时间紧迫只练了一天。他们从夜里练到第二天中午，睡过一觉之后直接出发去录制，而王晰忙得两天没睡。幸亏结果是不负辛苦的。男中音沉稳地托住假声男高的婉转空灵，人们才第一次意识到这个年轻歌手的实力不凡。这一期节目里刘彬濠理所当然地成为关注的焦点，被几位导师反复夸赞——周深自然无需多说，那么在合作中不拖后腿甚至不落下风的刘彬濠当然应该多多赞扬。周深在后续采访里认同了这一点：“他很不错的。聪明，基本功扎实，嗓子又好。又能自己作曲填词……天生的音乐人。”周深说，“大家多关注关注！我们工作室旗下唯一一名艺人！除了我以外！”周深的性格好，路人缘也好，顺理成章在工作室的助力下将刘彬濠送到更明亮的台前，又送他一个叫“山楂”的外号。</span></p><p><span>转天陈博豪就转发了这条访谈微博，@刘彬濠期待未来合作。合作？什么合作？刘彬濠茫然地关上微博，王晰下一秒打来电话：有影视剧找你唱片尾曲。</span></p><p><span> </span></p><p><span>录音棚在离他住的地方太远，一东一西，跨越一道道环线，出发时是天黑，结束时也是天黑。</span></p><p><span>陈博豪替他开了门，拿了双酒店一次性拖鞋，又给他端过一杯水来。</span></p><p><span>里头泡着个胖大海。</span></p><p><span>“罗汉果胖大海煮水。”陈博豪坐在床上托着下巴看他，“下午出去买的。”</span></p><p><span>有一点点甜。他们从唇边的水渍分享了这点味觉。陈博豪把杯子拿走，顺手放在桌上，又回身来圈着刘彬濠的手腕。“瘦了。”他说，细细一摩挲，“节目录完好好休息。”</span></p><p><span>刘彬濠没动，缩在椅子里，一副很疲惫的姿态，又放空了。前一天凌晨才录完节目，今天又在录音棚待了一天，“棚虫”，有的老师这么自称。这种几乎是昼伏夜出的生活倒是和还没来北京的时候相似，都一天天的见不到太阳。区别在于以前陈博豪会去接他，骑一辆单车沿着珠江边上一路回家去。江水的波纹上映着两侧高楼千变万化的霓虹，混在潮湿的空气里向他涌来。他们在那条路上说过很多未来，只是如今都吹散在风里。</span></p><p><span>“我也想开演唱会。”他们路过摩天大楼，上面灯光变幻着摆出当红明星的演唱会应援。刘彬濠缩在陈博豪的肩膀后面说。</span></p><p><span>“嗯？”</span></p><p><span>“没什么。”刘彬濠笑着攀住他的肩膀，“你好好看路！”</span></p><p><span>“那你要给我留座位。”陈博豪说，“我要第一排！”</span></p><p><span>刘彬濠掐他。“你是来听演唱会还是来看人的？”</span></p><p><span> </span></p><p><span>能等到这个剧本是陈博豪没想到的。依旧是小制作网剧，但是是一个解谜密室类型的本子，男主带着一群朋友去当地一家很有名的大型密室玩，没想到密室里暗藏玄机，如此这般，一群人终于逃出生天。相当于给观众一个沉浸式的高难度密室体验。剧本逻辑链自洽，剧情不错没有天降陨石，角色也没有那种恐怖片必备的窒息操作……不论怎么看都是一个相当不错的本子。于是他就去了。</span></p><p><span>公司对这部剧的期待值没有太高，全十八线演员本身就没有知名度可言，宣传口只能一再强调自己是个“悬疑”“烧脑”“密室”剧，倒有点虚张声势的意思。</span></p><p><span>所以片尾曲线上发布的时候他是确确实实地惊了几秒。</span></p><p><span>陈博豪在各种场合听过刘彬濠唱歌。在家里，在路上，在酒吧，在他耳边。那都是刘彬濠在他的眼前唱的。如今声音从音响里流淌出来，漫过地面，漂浮着向上，直到将他淹没。</span></p><p><span>他发消息给刘彬濠：你在哪？</span></p><p><span>过了一会儿对面回复：在家，写歌。</span></p><p><span>原来他此时确实没有在唱歌。</span></p><p><span>——我想听你的演唱会。</span></p><p><span>——那你等吧。</span></p><p><span>——预留张票？</span></p><p><span>——好啊。</span></p><p><span>手机重归平静。音响播完一首，歌单里没有别的歌，只好开始单曲循环。他溺死在那声音里，隐隐约约地想：……原来他此时确实没有在唱歌。</span></p><p><span> </span></p><p><span>斑斑是在一个很普通的日子来到他身边的。英短蓝白猫，一个多月的一只小猫，只会奶声奶气地在家里撒娇。“给你找个伴儿。”王晰蹲下来摸摸猫猫头，“不然我看你都快发霉了。”</span></p><p><span>并没有不给他工作的意思。只不过骤然一场降温让他感冒得彻底，只能烂在家里当一条咸鱼。咸鱼家里进了猫，不得不行动起来，猫粮猫砂猫窝猫抓板，一样一样往家运，在小房子里收拾出一块地方给猫辗转腾挪。</span></p><p><span>实际上小猫并不闹腾。究其原因在于腿短。刘彬濠逮着它上不来床的时刻举起手机猛拍一通。</span></p><p><span>微博发送。刷新。刘彬濠往下一划，眼见着自己的微博下面紧跟着一条陈博豪发的拖鞋。这下可巧。他点进自己的微博评论区，粉丝们除了注意到新来的小猫以外，还有一部分发出直击心灵的疑惑：</span>
+<span>“你和陈博豪约好了？”</span></p><p><span>我没有，我不是，别瞎说。刘彬濠退出微博，倒在床上装鸵鸟。刘斑斑在地上奶声奶气地喵喵喵，他趴在床边上伸手下去，被斑斑叼住当磨牙棒使，于是鬼使神差地开始录视频发朋友圈：周深工作室第三代艺人！</span></p><p><span>王晰很快评论：所以你终于承认我是爹了？</span></p><p><span>周深紧随其后：它能唱《memory》吗？</span></p><p><span>陈博豪给他点了个赞，没有评论，没过多久就淹没在一片头像里。他切回微博去看拖鞋，依旧是匀称的长长一条，在有阳光的地毯上思考猫生。</span></p><p><span> </span></p><p><span>后来很长一段时间他们没有再联系。有多久呢？久到斑斑从一只撒娇卖萌的大眼睛小奶猫长成了一只冷酷无情的斑斑猪。刘彬濠松手让猫从身上下去，话筒里清晰地收录到“咚”的一声。“胖子。”他说，而斑斑回头冲他喵喵大叫一声，随即若无其事地离开镜头。</span></p><p><span>“好那老师我们继续。”工作人员说。</span></p><p><span>他们正好聊到猫。“这是第一次养猫吗？”</span></p><p><span>“不是。来北京以前养过。后来送人了。”于是顺理成章的，他们谈起过去。这是刘彬濠第一次讲起以前的事情。在这个冬日开着暖气的房间里，他仿佛一瞬间回到遥远的南方的夏天。潮湿的风盘桓在室内，把他们所有的窗户撞得乒乓乱响，风扇起着聊胜于无的作用，把一处的水汽吹到另一处。他床头堆着的花露水和蚊香充斥了这个季节。从四月到十一月，快乐把时间缩短，而回忆把它拉长，于是当他回忆起来的时候那八个月着实变成了漫长漫长的苦夏。</span></p><p><span>他的记忆割裂成两部分，以夕阳为分界。陈博豪占据了这两部分。他才注意到——就像房间里的大象——他几乎难以在叙述中把陈博豪剥离出去。</span></p><p><span>如此刘彬濠终于明白那些先前的采访里陈博豪为何对问题避而不答或者一笔略过，又为何他的粉丝们总揣测那段生活里有另一个人的存在。他面对镜头忽然哑口无言。对方以为他陷入难以自拔的回忆，耐心地等候。</span></p><p><span>他在这个简单的话题下落荒而逃。</span></p><p><span> </span></p><p><span>“失恋过吗？”简弘亦问。</span></p><p><span>刘彬濠摘耳机的动作进行到一半，手停在耳边，滑稽地愣在麦克风前：“……啊？”</span></p><p><span>“没有别的意思，就是觉得很好。”简弘亦撑着下巴打量他，“晰哥知道吗？”</span></p><p><span>“……知道吧。”他纠结两秒，决定说实话。资深音乐制作人没有再为难他，示意他可以出来，于是他拖个椅子跟在后面看录音老师工作。这是他近来的生活日常：写歌，录歌，跟在录音棚的老师后面学制作。王晰忙着筹办周深的演唱会，把他托付给简弘亦。简弘亦这人很好说话，对音乐一心热忱，教起学生来也尽心尽力，刘彬濠自认不是一颗榆木脑袋，也必须要承认短短几天内已经开窍数次。</span></p><p><span>“写得挺好的。”简弘亦说，“嗓子也好。难怪王晰要签你。晰哥这个人……你相处久了，应该知道，别看他是个东北人，糙得很，其实看事情门儿清，人精一个。”刘彬濠点头。</span></p><p><span>“当初川子三更半夜给我打电话说跟晰哥在广州遇到一个小孩儿……我还没搞明白什么事儿，没头没尾的。第二天晰哥就说他出来跟着周深单干。我说那小孩儿呢？他说直接签进工作室。我那时候就想，哎，这有意思。晰哥做事情总是自有道理，他下的决定不会出错。”简弘亦说。</span></p><p><span>“所以呢，再等等。”</span></p><p><span>他确实等了很久。也不是一味的等待：王晰把他交给简弘亦，几乎是给他找了一个全能的前辈当老师：词曲演唱制作，从一首歌的诞生到最终完成，整个过程都把控在自己手里。这样你才能做出来你自己想要的东西。简弘亦说。你可以一个一个琢磨发音，逐字斟酌——音乐人最大的自由就是自我表达的自由，我要说，我只说，我想说的。那么我也只唱我想唱的。这太理想化了。但是你掌握越多主动权，这个理想就越现实。</span></p><p><span>只有理想是吃不上饭的，你把它变成现实了，金子才能换来面包。</span></p><p><span> </span></p><p><span>周深忙着他的巡回大舞台的时候，刘彬濠也挣得了一个不算小的舞台。</span></p><p><span>“表演嘉宾，好啊。我们彬彬都能去当嘉宾了。”周深给他发语音，“晰哥陪你去，别怂啊。”</span></p><p><span>盛典当日安排早早送到他这里，除了助理外王晰执意要来，刘彬濠本来还不明白为什么，直到微博上公布了奖项入围名单。</span></p><p><span>他很少发微博，也几乎不登陆，因此这完完全全是一个意外的巧合。名单有点长，但是陈博豪的名字恰好出现在没有被折叠的那一部分里。他没有动力点开看完，草草扫过一眼就关掉软件，又拿起日程安排翻看。很难讲看进去多少，反正他的任务就是去唱一首歌，然后回到台下安稳坐着看完颁奖礼。</span></p><p><span>所以当镜头最终锁定陈博豪的时候，刘彬濠其实正在放空。他坐的位置靠后，没人注意他，王晰不可能和他坐在一起，因此放空得毫不遮掩。</span></p><p><span>陈博豪的名字唤回他的注意。年轻的男演员在座位上愣了一秒，随即起身，拥抱身边的导演，然后走上台去。刘彬濠看着台上，脑子里一片混乱的空白。</span></p><p><span>陈博豪拿过话筒的时候刘彬濠情不自禁地屏住呼吸，随后又觉得自己像个自作多情的傻子。他抬头看台上，男演员发表简短的感言和致谢，感谢他的朋友，导演，老师，感谢每一个在这个行业里帮助他的人。</span></p><p><span>那我呢。刘彬濠想。我算什么？</span></p><p><span> </span></p><p><span>王晰执意跟来的做法是明智的。他把刘彬濠塞进车里交给司机，又交代助理一定把人送进家门，这才转身奔向机场。刘彬濠必须承认——如果这时候他还意识清醒的话——简弘亦之前说的是对的：“晰哥做事情总是自有道理，他下的决定不会出错。”不然这时候他可能已经莽撞地做出什么事情。</span></p><p><span>助理不清楚他和陈博豪之间的事情。他本来也没有明说过，只是王晰识人太精，一眼看透。小姑娘把他送回家里，烧好热水，又拿了醒酒药盯着他吃掉，这才离开，留他一人在家。满屋安静。</span></p><p><span>暖气烧得很足。室内有点干，加湿器刚打开，过一会儿就好。刘彬濠仰面躺在沙发上一动不动。这是他经历的第几个北方的冬天？干燥，干燥，干燥。与广州截然不同。但是好歹室内有了暖气，平白生出一种夏秋之交的错觉。</span></p><p><span>他伸手去够茶几上的手机，一个翻身摔到地上，索性躺着没起来，解锁，打开微博。首页没什么东西——他也没关注几个人，往下一刷就看到陈博豪的营业微博，顺手点进去陈博豪的微博首页，一条条往下翻。</span></p><p><span>他的猫。</span></p><p><span>他在的剧组。</span></p><p><span>他听过的歌。</span></p><p><span>入冬的第一场雪。</span></p><p><span>他摔伤报平安。</span></p><p><span>他第一次吊威亚。</span></p><p><span>他失眠。</span></p><p><span>他的猫病了。</span></p><p><span>他的猫撒娇。</span></p><p><span>……</span></p><p><span>网剧的片尾曲宣传。</span></p><p><span>他主演的第一部网剧。</span></p><p><span>他的第一条微博。</span></p><p><span>@陈博豪同学：好想看演唱会啊。</span></p><p><span>时间是他来到北京的那天凌晨。</span></p><p><span>评论区里有很多粉丝考古打卡，也有很多粉丝猜测是想去谁的演唱会。</span></p><p><span>刘彬濠记得自己那时候还是常刷微博的。为什么没有看到这一条呢？</span></p><p><span>他点了一个赞，然后把手机扔到沙发上，开始肆无忌惮地流眼泪。</span></p><p><span> </span></p><p><span>哭到睡着的直接影响就是刘彬濠错过了来自王晰的电话——不知道这算是好事还是坏事。助理三更半夜又回到他的公寓找他，按了好久门铃没有回应，迫不得已不请而入，结果看见一个躺在客厅地上的刘彬濠。</span></p><p><span>当然刘彬濠本人对此毫不知情。他再睁眼已经是第二天早上十点，助理一脸谢天谢地地跑进来说哥你醒了？让他生出一种自己前一晚酒精中毒此时已经躺在医院病房的错觉。</span></p><p><span>目前的情况就是，这件事情没法用手滑解释。你能手滑点赞，但是不能因为手滑一下子翻到陈博豪的第一条微博去，更何况你俩几乎没有公开场合的交集。微博已经闹得沸反盈天，广场上飘着各种猜测，粉丝和营销号齐齐下场，打成一团。刘彬濠自认是个不太能言善辩的人，他的粉丝竟然也和他一个画风，在广场上无力挣扎。这倒也不怪他们，毕竟事实摆在眼前，他们都找不出合理的解释替他开脱。王晰在屏幕这头叹了好长一口气。</span></p><p><span>“先不回应。”这是工作室最后做出的决定。不回应在某些时候等于变相的回应。两边正主都没有吭声，工作室和公司也没人发话，场面倒是一种诡异的沉默。表面上的战场偃旗息鼓了，背地里却不见得有多安宁。</span></p><p><span> </span></p><p><span>哪怕这种时候陈博豪也没有跟他联系。两个人的聊天记录停止在元旦时的新年祝福，再往前的消息都留在他的旧手机上，而且他也没有什么印象。</span></p><p><span>事情到底如何走到如此地步。</span></p><p><span>助理好奇而又小心翼翼地问起来的时候刘彬濠陷入了一阵沉默，并非他想要逃避这个问题，是他实在也有些想不明白。其实要说起来他可以有很多个理由，比如工作太忙，比如距离太远，比如生活太难。可究其根本这些都不是理由。</span></p><p><span>“……可能只是时间太久了。”刘彬濠说。这是他来北京的第四年，做出了一些作品，挣得了一点名声，一些粉丝，一块落脚之地，理想变成现实换来面包。</span></p><p><span> </span></p><p><span>现场的粉丝在刘彬濠宣布要开演唱会的时候炸开了锅。规模不大，只去几个城市——刘彬濠强调。</span></p><p><span>“会有特邀嘉宾吗？”主持人问。这个问题是开录前没有的。刘彬濠看了她一眼，拿着话筒接着说：“会请老师和前辈来看，具体场次、其他的都没有定。”</span></p><p><span>周深在旁边接话：“只要你请，我一定去！”于是场上乱成一团，话题戛然而止。</span></p><p><span>“所以你要请陈博豪吗？”王晰在副驾驶问。车里只有助理，王晰，周深和刘彬濠，三个人等着他开口。</span></p><p><span>“哪怕请了，估计他那边经纪人也会回掉。”王晰说，“你得做好这个打算。”</span></p><p><span>“我知道。”刘彬濠说，录了五六个小时的节目，他的嗓子又哑又沉，说出来的话像不会上浮的气泡，落在满车的沉默里，“我知道。”</span></p><p><span> </span></p><p><span>陈博豪给他的官宣第一场演唱会点了个赞，留了个期待的评论，但是本人并没有到场。</span></p><p><span>如此第二场、第三场、第四场，陈博豪挨个点赞，一个不落，一场没去。</span></p><p><span>所以只是当初为了给演唱会造势？有营销号说，搞点噱头，好卖票出去。根本就没给邀请吧——如果真心实意想请人来，怎么可能一张票都不给。</span></p><p><span> </span></p><p><span>他们把第五场定在广州，在他的生日当天。</span></p><p><span>“接下来是一首未公开曲目。”刘彬濠说，“过一段时间应该会发。先给大家清唱一小段。”</span></p><p><span>他唱的是很久以前在那档综艺的后台花絮里弹过的那段demo。喜欢他很久的老粉发出小小的骚动，随后又弥漫到全场。刘彬濠茫然地环顾一圈，发现提词器上出现一行字：“未公开环节。”</span></p><p><span>提词器上的字变了：“看大屏幕。”</span></p><p><span>于是刘彬濠回头看屏幕，这才明白骚动的来由。屏幕上不知道什么时候亮起四个字：“特殊嘉宾。”</span></p><p><span>于是很远的地方似乎有哼唱声从音响传来。唱的还是他弹过的那个demo，但不是同一段。他从来没有在公开场合唱过后半段。</span></p><p><span>躁动如同海浪一层一层蔓延上来，从观众席的角落翻涌向舞台中央。刘彬濠保持着抬头望向屏幕的动作，白色的追光落在他身上，晃得他睁不开眼。</span></p><p><span>“陈博豪。”他很轻地问，“是你吗？”</span></p><p><span>于是涌动的观众之中有人起身走向舞台。台上太亮，其实看不清台下。他只模糊地看到一个穿着白色衬衫的影子。</span></p><p><span>影子走上台来，走进光里。他手里拿着不知道谁递给他的话筒。</span></p><p><span>“彬濠，生日快乐。”陈博豪说。</span></p><p><span>刘彬濠的思维卡了一下，没等他想好该回答什么，就听见自己说：</span></p><p><span>“你为什么坐得那么远？”</span></p><p><span>这是他人生第一次巡回演唱会的收官场。</span></p></div>
+</body>
+</html>
