@@ -1,0 +1,509 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title></title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    padding-bottom: .3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+   padding-bottom: .3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+
+</style>
+</head>
+<body class='typora-export os-windows' >
+<div  id='write'  class = 'is-node'><center>异乡候鸟</center><p><span>我是在回家的路上捡到阿黄的。</span></p><p><span>从学校回家的路上要经过一座街心公园，不大，没有人看管，草木胡乱生长，像极了什么被遗弃的地方。人们往往只在主干道上走一走，很少有人往深处涉足。我也许是为数不多把它完整地走过一遍的无聊人之一。其中有条小路弯弯曲曲直通无人的侧门，我一般都这样抄近路回家。</span></p><p><span>那条路通常无人光顾，铺了细碎的石子，踩上去窸窸窣窣地响。两旁种了颇为凋敝的竹子，不知是什么品种，竹竿粗黄，并不好看。</span></p><p><span>也藏不住人。</span></p><p><span>我走到一半的时候，看到了阿黄。彼时他躲在竹林深处，如果不是下午三点阳光仍盛，我是看不见他的。</span></p><p><span>“谁在那里？”我大声问，刚开口就有些后悔。</span></p><p><span>那时我才刚转学三个月，跟着父亲从西北一路南下，到这南方的城市来。推行普通话之类的政策只是初现端倪，而学校里老师同学讲话一律都用又黏又快的方言，我既学不来，也听不明白。我过去生活的那座城市在西部与哈萨克斯坦接壤的地方，混杂着几十个民族，各种语言，倒也不像如今这城市一般排外。他们共享一套私密的语言密码，并且堂而皇之地将我摒弃在外。</span></p><p><span>我是一个年幼的异乡人。在这南方的沿海城市里突兀地说一口西北的普通话，生活在语言的缝隙里。</span></p><p><span>竹林里的影子在动，随即钻出来一个小孩。</span></p><p><span>五年级的我能说他是小孩，纯粹是因为他着实比我年幼一些。他的头发乱糟糟的，沾了一片黄色带污渍的竹叶，瞪着眼睛无辜而不安地抬头看着我。</span></p><p><span>我问他是不是走丢了，随即又担心他会不会听不懂我说的什么。</span></p><p><span>然而他飞快地摇头。</span></p><p><span>你在里面干什么？我又问他。你渴不渴？要不要回家？</span></p><p><span>他连着摇头，但不说话。</span></p><p><span>我没有办法，只打算从侧门出去，找个大人来。</span></p><p><span>“你在这里等我一下好不好？”我跟他说。他没摇头，也没有点头，只盯着我看。我得不到回应，只好转身往前走。</span></p><p><span>我的鞋子踢在石子小路上，窸窸窣窣地响。我的脚步声里夹着别的声响。</span></p><p><span>我回头看，他低着头跟在我身后，走在我的影子里，见我停了，抬头又看我。</span></p><p><span>“你要去哪？”我说。</span></p><p><span>他不应声。</span></p><p><span> </span></p><p><span>我就这样把一个小孩带回了家。家里没有人，爸爸还在上班，我给他倒了一杯水，让他在板凳上坐下，开始想办法。</span></p><p><span>他没有背书包，也没有穿这边学校统一的校服。“你叫什么名字？”我说。</span></p><p><span>他捧着我给他的玻璃杯小口地喝水，闻言停下动作，看着我发愣。我以为他不会回答，然而僵持许久，他说：“阿黄。”</span></p><p><span>那声音实在很小很艰涩，又带了点南方的音调，我其实是在后来才知道他的名字，在那时只是装作听得明白一样点头。</span></p><p><span>我再问他什么，他都不回答，只安静地喝水。我于是不再管他，掏出练习册铺在茶几上开始写作业，准备等爸爸回来再想办法。</span></p><p><span> </span></p><p><span>我再抬头的时候，阿黄已经不在小板凳上。</span></p><p><span>他趴在窗台边上踮着脚往外看。纱窗是卡住的，我平常都拉不开，他的胳膊肘贴在纱窗上，把网子向外拱起一个微微的弧度。他在看天上。</span></p><p><span>每天傍晚这个时候，都有成群的鸟飞过我们这一片矮楼的屋顶，往我们看不到的地方去。每一天都是。它们扇动翅膀的巨大声响从对面居民楼传来，迅速地逼近，到我们眼前，又到我们头顶，然后往背后去了。我家住在五楼，顶层，离天很近，能听见空气，翅膀，羽毛的声音。</span></p><p><span>阿黄还趴在那看。我说：“没有了。”</span></p><p><span>他回头看我。</span></p><p><span>“一天只有一群。”我说，“每天早上它们会飞过去，傍晚又飞回来。”</span></p><p><span>他没理我，扭头继续往窗外看。</span></p><p><span>也可能他其实没在看那群鸟。</span></p><p><span> </span></p><p><span>六点半的时候，爸爸回来了。</span></p><p><span>他一眼就看见阿黄，然后露出一种惊讶的表情。他认识阿黄。我站在客厅里，看着他把阿黄牵出门，然后敲响了对面屋子。</span></p><p><span>对面屋子里那个漂亮阿姨笑着把阿黄领进了门。</span></p><p><span> </span></p><p><span>原来阿黄是对面阿姨的儿子。我怎么从来没有见过他？</span></p><p><span>“你见过他的啊。”爸爸一边在厨房炒菜一边跟我大声说，“你还没上幼儿园的时候就跟他一起玩来着。后来他家搬走了，搬到西南去啦！”</span></p><p><span>上幼儿园是几岁？没上幼儿园又是几岁？</span></p><p><span>“那时候你就那么一点点大，没走两步就要大人抱。”我爸拿着铲子比划了一下，“阿黄才刚出生四个月，老黄和他那口子就工作调动走了，一个去甘肃，一个去四川。”</span></p><p><span>“你知道四川在哪吗？”我爸问我。</span></p><p><span>我想起来客厅里挂的那幅中国地图，上面贴着几个红色小星星，还有水彩笔划的一条线。星星是我爸带着我贴的，水彩笔的痕迹是我们从西北来到南方的路线。</span></p><p><span>从大公鸡左边上面的顶点一路弯弯曲曲地走下来。</span></p><p><span>“知道。”我咕哝了一句，跑到客厅去看了一眼，又回来告诉我爸，“在水彩笔的中间。”</span></p><p><span>我爸愣了两秒，笑得丢了铲子。</span></p><p><span>那天的炒饭糊了。</span></p><p><span> </span></p><p><span>阿黄跟我读同一间小学，小我三个年级。二年级在五年级的楼下两层，全是吵吵闹闹的小孩儿。</span></p><p><span>每天老师都会让大家排着队出校门，宣布放学的时候“哄”地一下鸟兽尽散，吵吵嚷嚷地奔向各自家长。二年级放学早，下午三点就已经走得干净，五年级的我们则只有每周五才能三点放学。阿黄会在门卫室或者操场上等我，直到我下课后背着书包，缀在队尾走向校门。</span></p><p><span>让他跟我一起回家是阿姨的意见，她是个老师，在很远的学校教学生跳舞，回家很迟。</span></p><p><span>“阿黄以后想不想去学跳舞？”我问阿黄。</span></p><p><span>他的名字有四个字，我念着嫌长，仍然叫他阿黄。他也不拒绝，只是后来才跟我提出毫无气场的抗议：“好像在叫狗狗。”</span></p><p><span>“你叫我的名字就不觉得自己在叫羊吗？”我理直气壮地摸了一把他的头发，被他一手拍下去。</span></p><p><span> </span></p><p><span>“不想。”他说，“学跳舞要好晚才能回家啊。”</span></p><p><span>“好晚回家的话就看不见小鸟了。”</span></p><p><span> </span></p><p><span>二年级的作业很少，写写画画几笔就做完了。爸爸把纱窗加固了一次之后在窗台下面留了一个小板凳，专门给阿黄踩着看外面。</span></p><p><span>他每天回来得晚，鸟们早就飞回人看不见的地方，因而他从来都不知道阿黄趴在窗台上看什么，他也不问。</span></p><p><span>客厅的窗子朝西，天气好的时候能看见落日，课本上说“天上的云从西边一直烧到东边，</span><a href='https://baike.baidu.com/item/红彤彤'><span>红彤彤</span></a><span>的，好像是天空着了火”。鸟群就背着一团团火，惶急地掠过我们头顶。火光映在屋子里，茶几的玻璃红通通的，电视机也红通通的，我在侧面看见阿黄的眼睛里映出一片红色的云。</span></p><p><span> </span></p><p><span>六年级开学一个月后，阿黄不再在门卫室等我一起回家了。黄叔叔调来南方，和黄阿姨在同一个学校里教书，但没有那么忙。他是个很温和很平实的中年人，教学生唱歌，唱民歌。周末里我能听见对面屋子里传来练声的声音，歌声飘出很远，我一路往学校走，一路听那声音越来越小，最后消失在身后。六年级的周六也要上课，而且周五下午再没有早早放学的时候。黄叔叔接替了我陪阿黄回家的差事。</span></p><p><span>阿黄有点不高兴，不过没有太表示出来。他比我刚刚在公园里捡到他的时候健谈得多。在我们还一起回家的一个下午，他跟我说：“我不想学唱歌。”</span></p><p><span>这句话实在有些没头没脑，我反应慢两拍，就听着他故作大人地长长叹一口气，走快两步到我面前，一面倒退着走路一面撅着嘴问我：“你想吗？”</span></p><p><span>我没什么想不想的。学校里的合唱团并没有我的份：合唱团和乐团的成员都是二三年级就选出来的，被老师挨个分配到不同声部或者乐器组去，然后一年一年地练下来。我转学进来得晚，早就没有这个机会。但是阿黄刚上三年级，被音乐老师逮进了合唱团。</span></p><p><span>有几次我去老师办公室送作业，路过音乐教室，看见合唱团在课余时间排练，阿黄二年级，站在第一排的边边上，系着个红领巾，蔫头巴脑地唱。学校老师知道他的爸爸妈妈都教艺术，会请他爸爸来指导合唱。这种时候阿黄就显得尤其萎靡。</span></p><p><span>“我觉得合唱团不好玩。”他小小声跟我抱怨。</span></p><p><span>音乐本来是他的游戏，但现在不是了。</span></p><p><span>他也没有机会来我家看傍晚的群鸟和夕阳了。</span></p><p><span> </span></p><p><span>后来的好几年如同被按下加速按钮，过得匆忙而混乱。我上了当地的一所寄宿学校，一周回一次家。学校离家有些距离，需要坐公交车从下午晃到黄昏，再从车站走回家的时候，天色已经开始逐渐变暗。爸爸开始在家里等我回来一起吃饭。</span></p><p><span>中学里不再有人因为我不会说当地的方言而排挤我。很多人都不会说。大家说一样的普通话，穿一样的校服，住在一样的宿舍里。</span></p><p><span>中学六年里我和阿黄很少有机会碰面。他早先是跟着合唱团训练，后来升了高年级，开始出去比赛，再然后，他也上中学了。</span></p><p><span>我们不在同一所学校，他走得更远，去了黄叔叔任教的大学的附属中学，与我所在的学校正好一南一北。如此下来，对阿黄的近况最熟悉的成了我爸。</span></p><p><span>我想阿黄可能也是从他爸爸那里知道我的消息。</span></p><p><span> </span></p><p><span>音乐学院录取下来的第二天，门卫打电话到我的班主任那，辗转告诉我有人在校门口找我。</span></p><p><span>那是夏天的正午，五月的太阳粘在天上大喇喇地放热，晒得石板的地面都出现微弱的反光。门卫查了我的学生卡，把阿黄放进来。</span></p><p><span>我不知道他是怎么穿越整个城市过来的，额角脖颈全是亮晶晶的汗水，头发湿成一缕一缕塌下来，校服洇开一片。他没背包，就这么突然地跑到我的学校来，就为了问我一句：</span></p><p><span>“你是不是要出国学音乐了？”</span></p><p><span>我一边手忙脚乱地给他擦汗一边说对啊，昨天收到的offer。</span></p><p><span>“你没告诉我！”他甩了一下脑袋，一滴汗水掉在我还没从空调冷气里恢复温度的手背上，被太阳晒得滚烫。</span></p><p><span>像个受了委屈的小狗狗。</span></p><p><span>有一瞬间我怀疑自己是否真的做错了什么或者背叛了什么，然而实际上并没有。</span></p><p><span>他站在下一级的台阶上抬头看我，眼睛睁得很大，嗫嚅了两下，没有再问我什么。</span></p><p><span>“快回学校吧。”我说，“我周末去找你好不好？”</span></p><p><span> </span></p><p><span>去处已定之后我不用再留在学校，于是回家开始漫长的暑假。我爸计划着要换个房子，每个周末都拉着我在各个楼盘晃悠。他年纪大了，想趁着我还在国内有人搭手，换个有电梯的房子。</span></p><p><span>这次我把事情如实告诉阿黄。“我可能要搬走了。”我告诉他。</span></p><p><span>那天他刚考完中考，卷子没什么难度，他又签了协议直升本校，因此考试几乎是一个过场，对他来说可能只是这个夏天里一支很长的前奏曲。</span></p><p><span>出乎我意料的，他很平静。</span></p><p><span>“反正你还要去留学的。”他说——让我一下联想到一个月前那个明晃晃的正午——紧接着他又叹了口气，“我以后也会出去的。那就更远了。”</span></p><p><span>这几乎可以说是一个必然。</span></p><p><span>此时已经到了傍晚。我们在街心公园里慢慢地闲逛，日头西斜，缀在树梢上，倒是没那么热了。有巨大的翅膀的声音扑簌簌地由远及近，被群鸟从我们面向着的居民区裹挟而来，掠过我们头顶，黑压压的一片。我们两个不由自主地回头，看见它们飞向公园一角的树林。叶子呼啦啦地抖动一番，又平静下来。</span></p><p><span>迟来的风吹过我身边，我闻到他身上淡淡的花露水的味道。</span></p><p><span> </span></p><p><span> </span></p></div>
+</body>
+</html>
